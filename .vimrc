@@ -1,34 +1,90 @@
+" An example for a vimrc file.
+"
+" Maintainer:	Bram Moolenaar <Bram@vim.org>
+" Last change:	2019 Dec 17
+"
+" To use it, copy it to
+"	       for Unix:  ~/.vimrc
+"	      for Amiga:  s:.vimrc
+"	 for MS-Windows:  $VIM\_vimrc
+"	      for Haiku:  ~/config/settings/vim/vimrc
+"	    for OpenVMS:  sys$login:.vimrc
+
+" When started as "evim", evim.vim will already have done these settings, bail
+" out.
+if v:progname =~? "evim"
+  finish
+endif
+
+" Get the defaults that most users want.
+source $VIMRUNTIME/defaults.vim
+
+if has("vms")
+  set nobackup		" do not keep a backup file, use versions instead
+else
+  set backup		" keep a backup file (restore to previous version)
+  if has('persistent_undo')
+    set undofile	" keep an undo file (undo changes after closing)
+  endif
+endif
+
+if &t_Co > 2 || has("gui_running")
+  " Switch on highlighting the last used search pattern.
+  set hlsearch
+endif
+
+" Put these in an autocmd group, so that we can delete them easily.
+augroup vimrcEx
+  au!
+
+  " For all text files set 'textwidth' to 78 characters.
+  autocmd FileType text setlocal textwidth=78
+augroup END
+
+" Add optional packages.
+"
+" The matchit plugin makes the % command work better, but it is not backwards
+" compatible.
+" The ! means the package won't be loaded right away but when plugins are
+" loaded during initialization.
+if has('syntax') && has('eval')
+  packadd! matchit
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
+" PluginInstall
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'Yggdroot/LeaderF'
 Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tomasr/molokai'
 call vundle#end()            " required
 filetype plugin indent on    " required
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PlugInstall
 call plug#begin()
 Plug 'preservim/nerdtree'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'vim-scripts/taglist.vim'
 Plug 'Valloric/YouCompleteMe'
 call plug#end()
 " You can revert the settings after the call like so:
 filetype indent off   " Disable file-type-specific indentation
 syntax off            " Disable syntax highlighting
+endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax on
 syntax enable
 set ignorecase
-set mousetime=1
+set mousetime=100000
 set scroll=20
 set mouse=a
 set hlsearch
-set nonu
+set nu
 set background=dark
 colorscheme molokai
 set ai
@@ -65,7 +121,21 @@ nnoremap <leader>l :LeaderfFunction<CR>
 nnoremap <leader>v :LeaderfLine<CR>
 nnoremap <leader>o :!subl %<CR>
 nnoremap <silent> <Leader>f :LeaderfFile<CR>
-let g:Lf_PreviewInPopup = 1
+nnoremap <leader>t :terminal<CR>
+nnoremap <leader>s :mksession! .vim_session<CR>
+let g:Lf_PopupHeight = 120
+let g:Lf_PopupWidth = 120 
+let g:Lf_EnableCircularScroll = 1
+let g:Lf_AutoResize = 1
+let g:Lf_QuickSelectAction = 'v'
+let g:Lf_PopupBorders = ["─","│","─","│","╭","╮","╯","╰"]
+let g:Lf_PopupAutoAdjustHeight = 1
+let g:Lf_PopupColorscheme = "LeaderF/autoload/leaderf/colorscheme/popup/"
+let g:Lf_PreviewHorizontalPosition = "cursor"
+let g:Lf_CursorBlink = 1
+let g:Lf_UseRelativePath = 1
+let g:Lf_FollowLinks = 1
+"let g:Lf_SpinSymbols = ['△', '▲', '▷', '▶', '▽', '▼', '◁', '◀']
 let g:leaderf_cwd = 'auto'
 let g:Lf_StlColorscheme = 1
 let g:Lf_WindowHeight = 40
@@ -87,17 +157,15 @@ map <F8> :NERDTreeToggle<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd VimEnter * if !exists('g:vim_first_open_dir') | let g:vim_first_open_dir = expand('%:p:h') | execute 'cd' g:vim_first_open_dir | endif "设置vim工作目录为第一次打开文件所在目录
 
-
 " 创建一个键映射来调用 cscope 查找函数被调用的位置 <C-R>=expand("<cword>")<CR> 用来获取当前光标下的单词，并将其作为参数传递给 cscope 命令
 nnoremap <F2> :cs find s <C-R>=expand("<cword>")<CR><CR>
 nnoremap <F12> :cs add cscope.out<CR>
 
 "vim刚打开时候加载cscope和ctags
-autocmd VimEnter * silent! lcd %:p:h | set tags=./tags;
-autocmd VimEnter * silent! execute "cs add " . getcwd() . "/cscope.out " . getcwd()
+autocmd BufRead * if filereadable("cscope.out") | execute "cs add cscope.out" | endif
+autocmd BufRead * if filereadable("tags") | execute "set tags=tags" | endif
 set tags=./tags,tags;/
 cs add cscope.out
-
 
 " 自动补全配置
 set completeopt=longest,menu    "让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
@@ -108,10 +176,19 @@ map <C-z> <C-o>
 map <C-a> <C-i>
 map <Space> :
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#tabline#enabled = 1
+let g:airline_left_sep = '»'
+let g:airline_right_sep = '«'
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'default'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#tabline#show_tab_nr = 1
+let g:airline_theme='solarized_flood'
+let g:airline_powerline_fonts = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <silent> <F3> :TlistToggle<CR>
 let Tlist_WinWidth = 50
@@ -161,3 +238,6 @@ command! -bang -nargs=* FzfContent call fzf#vim#grep('grep', fzf#vim#with_previe
 
 " 将 FZFContent 映射到快捷键
 nnoremap <leader>ff :FzfContent<CR>
+
+
+
