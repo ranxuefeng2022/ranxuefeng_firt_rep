@@ -1,6 +1,7 @@
-fzf --preview='xdg-open {}'
-fg %$(jobs | fzf | awk '{print $1}' | grep -o '[0-9]*')
-fzf --preview='identify -format "%wx%h" {}' --preview-window=right:50%
+
+"fzf --preview='xdg-open {}'
+"fg %$(jobs | fzf | awk '{print $1}' | grep -o '[0-9]*')
+"fzf --preview='identify -format "%wx%h" {}' --preview-window=right:50%
 set nocompatible              " be iMproved, require
 filetype off
 " PluginInstall
@@ -25,7 +26,7 @@ call plug#end()
 filetype indent off   " Disable file-type-specific indentation
 syntax off            " Disable syntax highlighting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let loaded_matchparen=1a
+let loaded_matchparen=1
 syntax on
 syntax enable
 set mousetime=100000
@@ -34,6 +35,7 @@ set hlsearch
 set nonu
 set background=dark
 colorscheme molokai
+set t_Co=256
 set ai
 set cindent
 set nocompatible
@@ -59,7 +61,7 @@ set shiftwidth=4
 set nowritebackup
 set nobackup
 set noautowrite
-set number relativenumber
+"set number relativenumber
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = " "
 nnoremap <leader>r :LeaderfMru<CR>
@@ -77,7 +79,7 @@ let g:Lf_PopupHeight = 120
 let g:Lf_NoChdir = 1
 let g:Lf_WorkingDirectoryMode = 'c'
 let g:Lf_WorkingDirectory=expand('%:p:h')
-let g:Lf_PopupWidth = 120 
+let g:Lf_PopupWidth = 120
 let g:Lf_EnableCircularScroll = 1
 let g:Lf_AutoResize = 1
 let g:Lf_QuickSelectAction = 'v'
@@ -107,6 +109,10 @@ map <F8> :NERDTreeToggle<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd VimEnter * if !exists('g:vim_first_open_dir') | let g:vim_first_open_dir = expand('%:p:h') | execute 'cd' g:vim_first_open_dir | endif "设置vim工作目录为第一次打开文件所在目录
+let $DIR1 = expand('%:p:h')
+let $DIR2 = expand('#2:p:h')
+nnoremap <C-q> :cd $DIR1<CR>
+nnoremap <C-a> :cd $DIR2<CR>
 
 " 创建一个键映射来调用 cscope 查找函数被调用的位置 <C-R>=expand("<cword>")<CR> 用来获取当前光标下的单词，并将其作为参数传递给 cscope 命令
 nnoremap <F2> :cs find s <C-R>=expand("<cword>")<CR><CR>
@@ -125,8 +131,6 @@ set completeopt=longest,menu    "让Vim的补全菜单行为与一般IDE一致(�
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif "离开插入模式后自动关闭预览窗口
 
 nnoremap <C-@> :
-nnoremap<C-c> "+y
-nnoremap<C-v> "+p
 nnoremap<C-Space> :
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline#extensions#tabline#fnamemod = ':t'
@@ -159,3 +163,5 @@ let g:fzf_preview_window = ['right,50%', 'ctrl-/']
 let g:fzf_layout = {
       \ 'window': 'vertical'
       \ }
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
