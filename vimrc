@@ -72,8 +72,7 @@ nnoremap <leader>o :!subl %<CR>
 nnoremap <leader>t :terminal<CR>
 nnoremap <leader>a :FZF<CR>
 nnoremap <leader>x :%s/\s\+$//g<CR>
-nnoremap <leader>p :LeaderfFile pri-charge<CR>
-nnoremap <leader>k :LeaderfFile kernel<CR>
+vnoremap <Leader>t :s/^\s\+//<CR>:s/\s\+$//<CR>
 nnoremap <C-g> :pwd<CR>
 let g:Lf_PopupHeight = 120
 let g:Lf_NoChdir = 1
