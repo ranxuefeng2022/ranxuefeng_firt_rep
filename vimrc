@@ -1,3 +1,4 @@
+https://gitlab.com/wsdjeg/vim-galore-zh_cn/-/tree/master#%E5%AF%84%E5%AD%98%E5%99%A8
 
 "fzf --preview='xdg-open {}'
 "fg %$(jobs | fzf | awk '{print $1}' | grep -o '[0-9]*')
