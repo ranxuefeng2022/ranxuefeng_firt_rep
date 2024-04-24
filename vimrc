@@ -1,8 +1,6 @@
-https://gitlab.com/wsdjeg/vim-galore-zh_cn/-/tree/master#%E5%AF%84%E5%AD%98%E5%99%A8
+" auto reload vimrc when editing it
+autocmd! bufwritepost .vimrc source ~/.vimrc
 
-"fzf --preview='xdg-open {}'
-"fg %$(jobs | fzf | awk '{print $1}' | grep -o '[0-9]*')
-"fzf --preview='identify -format "%wx%h" {}' --preview-window=right:50%
 set nocompatible              " be iMproved, require
 filetype off
 " PluginInstall
@@ -36,7 +34,6 @@ set hlsearch
 set nonu
 set background=dark
 colorscheme molokai
-set t_Co=256
 set ai
 set cindent
 set nocompatible
@@ -48,8 +45,8 @@ set showmatch
 set matchtime=10
 set nowrapscan
 let g:rainbow_active = 1
-set clipboard+=unnamed "将系统剪贴板与 Vim 的默认寄存器相关联。这意味着当你复制或剪切文本时，该文本将自动放入系统剪贴板，从而可以在其他应用程序中粘贴
 set clipboard=unnamedplus
+set clipboard=autoselect
 set helplang=cn
 set langmenu=zh_CN.UTF-8
 set noswapfile
@@ -62,7 +59,13 @@ set shiftwidth=4
 set nowritebackup
 set nobackup
 set noautowrite
-"set number relativenumber
+set nonu
+set autoread
+set history=50
+set copyindent
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+vnoremap < <gv
+vnoremap > >gv
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = " "
 nnoremap <leader>r :LeaderfMru<CR>
@@ -70,16 +73,17 @@ nnoremap <leader>b :LeaderfBuffer<CR>
 nnoremap <leader>l :LeaderfFunction<CR>
 nnoremap <leader>v :LeaderfLine<CR>
 nnoremap <leader>o :!subl %<CR>
-nnoremap <leader>t :terminal<CR>
+"nnoremap <leader>t :terminal<CR>
 nnoremap <leader>a :FZF<CR>
-nnoremap <leader>x :%s/\s\+$//g<CR>
+nnoremap <leader>p :LeaderfFile pri-charge<CR>
+nnoremap <leader>k :LeaderfFile kernel<CR>
 vnoremap <Leader>t :s/^\s\+//<CR>:s/\s\+$//<CR>
 nnoremap <C-g> :pwd<CR>
 let g:Lf_PopupHeight = 120
 let g:Lf_NoChdir = 1
 let g:Lf_WorkingDirectoryMode = 'c'
 let g:Lf_WorkingDirectory=expand('%:p:h')
-let g:Lf_PopupWidth = 120
+let g:Lf_PopupWidth = 120 
 let g:Lf_EnableCircularScroll = 1
 let g:Lf_AutoResize = 1
 let g:Lf_QuickSelectAction = 'v'
@@ -109,14 +113,13 @@ map <F8> :NERDTreeToggle<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd VimEnter * if !exists('g:vim_first_open_dir') | let g:vim_first_open_dir = expand('%:p:h') | execute 'cd' g:vim_first_open_dir | endif "设置vim工作目录为第一次打开文件所在目录
-let $DIR1 = expand('%:p:h')
-let $DIR2 = expand('#2:p:h')
-nnoremap <C-q> :cd $DIR1<CR>
-nnoremap <C-a> :cd $DIR2<CR>
+"let $DIR1 = expand('%:p:h')
+"let $DIR2 = expand('#2:p:h')
+"nnoremap <C-a> :cd $DIR1<CR>
+"nnoremap <C-s> :cd $DIR2<CR>
 
 " 创建一个键映射来调用 cscope 查找函数被调用的位置 <C-R>=expand("<cword>")<CR> 用来获取当前光标下的单词，并将其作为参数传递给 cscope 命令
 nnoremap <F2> :cs find s <C-R>=expand("<cword>")<CR><CR>
-nnoremap <F12> :cs add cscope.out<CR>
 nnoremap <C-l> :tabnext<CR>
 nnoremap <C-h> :tabprevious<CR>
 
@@ -163,5 +166,3 @@ let g:fzf_preview_window = ['right,50%', 'ctrl-/']
 let g:fzf_layout = {
       \ 'window': 'vertical'
       \ }
-
-"""""""""""""""""""""""""""""""""""""""""""""""""
