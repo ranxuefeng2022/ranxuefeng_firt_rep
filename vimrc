@@ -90,17 +90,17 @@ set lazyredraw
 " Linebreak on 500 characters
 set lbr
 set tw=500
-
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
 set switchbuf+=useopen
 set switchbuf+=usetab
 set wildignore+=.*
+set foldenable
+set foldmethod=manual
 autocmd BufRead,BufNewFile * source ~/.vim/bundle/c.vim
 "autocmd BufRead,BufNewFile *  hi Visual ctermfg=white ctermbg=darkblue
 autocmd BufRead,BufNewFile *  hi Search ctermfg=white ctermbg=darkblue
-
 
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -113,24 +113,19 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 vnoremap < <gv
 vnoremap > >gv
-map <C-c> "+y
-map <C-v> "+p
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = " "
 nnoremap <leader>r :LeaderfMru<CR>
 nnoremap <leader>b :LeaderfBuffer<CR>
 nnoremap <leader>l :LeaderfFunction<CR>
-nnoremap <leader>v :LeaderfLine<CR>
 nnoremap <leader>f :LeaderfFile<CR>
 nnoremap <C-l> :tabnext<CR>
 nnoremap <C-h> :tabprevious<CR>
 nnoremap <leader>a :FZF<CR>
 vnoremap <Leader>t :s/^\s\+//<CR>:s/\s\+$//<CR>
-nnoremap <F5> :mksession! .ss.vim<CR>
-nnoremap <leader>s :source .ss.vim<CR>
 set sessionoptions-=options  " 避免保存不必要的选项
 nnoremap <C-g> :pwd<CR>
-let g:Lf_PopupHeight = 120
+let g:Lf_PopupHeight = 200
 let g:Lf_NoChdir = 1
 let g:Lf_WorkingDirectoryMode = 'c'
 let g:Lf_EnableCircularScroll = 1
@@ -140,9 +135,6 @@ let g:Lf_PopupColorscheme = "LeaderF/autoload/leaderf/colorscheme/popup/"
 let g:Lf_FollowLinks = 1 
 let g:Lf_WindowPosition = 'popup'  " 设置弹出窗口的位置，可以是 'popup'、'topleft'、'botright' 等
 let g:Lf_PopupHighlightGroup = 'Normal'  " 设置弹出窗口文本的高亮组
-let g:Lf_PopupMapping = 0  " 禁用 Leaderf 的默认按键映射，以便你可以自定义按键映射
-let g:Lf_RememberLastSearch = 1
-let g:Lf_UseGrep = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let NERDTreeOpenOnStartup=0 " 不在启动时打开NERDTree
 let NERDTreeWinPos="right" " 将NERDTree置于右侧
@@ -150,17 +142,17 @@ map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark
 map <leader>nf :NERDTreeFind<cr>
 map <leader>nm :NERDTreeMirror<cr>
-let g:NERDTreeGitStatusIndicatorMapCustom = {
-            \ 'Modified'  : '✹',
-            \ 'Staged'    : '✚',
-            \ 'Untracked' : '✭',
-            \ 'Renamed'   : '➜',
-            \ 'Unmerged'  : '═',
-            \ 'Deleted'   : '✖',
-            \ 'Dirty'     : '✗',
-            \ 'Clean'     : '✔︎',
-            \ 'Unknown'   : '?'
-            \ }
+let g:is_fullscreen = 0
+function! ToggleVerticalSize()
+if g:is_fullscreen == 0
+  execute "vertical resize 999"
+  let g:is_fullscreen = 1
+else
+  execute "vertical resize 110"
+  let g:is_fullscreen = 0
+endif
+endfunction
+nnoremap <silent> <leader>z :call ToggleVerticalSize()<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd VimEnter * if !exists('g:vim_first_open_dir') | let g:vim_first_open_dir = expand('%:p:h') | execute 'cd' g:vim_first_open_dir | endif "设置vim工作目录为第一次打开文件所在目录
 " 创建一个键映射来调用 cscope 查找函数被调用的位置 <C-R>=expand("<cword>")<CR> 用来获取当前光标下的单词，并将其作为参数传递给 cscope 命令
@@ -169,6 +161,7 @@ nnoremap <F2> :cs find s <C-R>=expand("<cword>")<CR><CR>
 "vim刚打开时候加载cscope和ctags
 autocmd BufRead * if filereadable("cscope.out") | execute "cs add cscope.out" | endif
 autocmd BufRead * if filereadable("tags") | execute "set tags=tags" | endif
+if 0
 set tags+=${HOME}/2362/lk/tags
 set tags+=${HOME}/2362/pl/tags
 set tags+=${HOME}/2362/kernel/tags
@@ -182,12 +175,17 @@ set tags+=${HOME}/2406/kernel/tags
 cs add ${HOME}/2406/kernel/cscope.out
 cs add ${HOME}/2406/pl/cscope.out
 cs add ${HOME}/2406/lk/cscope.out
+
+set tags+=${HOME}/factory/tags
+set tags+=${HOME}/health14/tags
+cs add ${HOME}/factory/cscope.out
+cs add ${HOME}/health14/cscope.out
+endif
 " 自动补全配置
 set completeopt=longest,menu    "让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif "离开插入模式后自动关闭预览窗口
-
 nnoremap <C-@> :
-nnoremap<C-Space> :
+nnoremap <C-w> <C-w>w
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#tabline#enabled = 1
@@ -211,7 +209,6 @@ let Tlist_WinWidth = 50
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " provide path directly to the library file
  let g:clang_library_path='/usr/lib/llvm-14/lib/libclang-14.so.1'
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "FZF config
 let g:fzf_vim = {}
