@@ -9,7 +9,7 @@ Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'vim-scripts/taglist.vim'
 Plug 'git@github.com:easymotion/vim-easymotion.git'
-Plug 'xavierd/clang_complete'
+"Plug 'xavierd/clang_complete'
 "Plug 'ycm-core/YouCompleteMe'
 call plug#end()
 filetype indent off
@@ -41,7 +41,6 @@ set noswapfile
 set nowb
 set mousemodel=extend
 set smartcase
-set ttymouse=xterm2
 set title
 set tabstop=4
 set shiftwidth=4
@@ -68,6 +67,8 @@ set wildignore+=.*
 set foldenable
 set foldmethod=manual
 set sessionoptions-=options
+set scroll=50
+set ttymouse=xterm2
 autocmd BufRead,BufNewFile * source ~/.vim/plugged/c.vim/ftplugin/c.vim
 autocmd BufRead,BufNewFile * source ~/.vim/plugged/c.vim/ftplugin/make.vim
 autocmd BufRead,BufNewFile *  hi Visual ctermfg=white ctermbg=darkblue
@@ -114,12 +115,32 @@ let g:Lf_PopupHeight = 200
 let g:Lf_NoChdir = 1
 let g:Lf_WorkingDirectoryMode = 'c'
 let g:Lf_EnableCircularScroll = 1
-let g:Lf_QuickSelectAction = 'v'
-let g:Lf_PopupAutoAdjustHeight = 1
-let g:Lf_PopupColorscheme = "LeaderF/autoload/leaderf/colorscheme/popup/"
+let g:Lf_PopupColorscheme = 'onedark'
 let g:Lf_FollowLinks = 1 
-let g:Lf_WindowPosition = 'popup'  " 设置弹出窗口的位置，可以是 'popup'、'topleft'、'botright' 等
-let g:Lf_PopupHighlightGroup = 'Normal'  " 设置弹出窗口文本的高亮组
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewPopupWidth = 200
+let g:Lf_PopupHighlightGroup = 'Normal'
+let g:Lf_PreviewScrollStepSize = 5
+let g:Lf_WindowWidth = 100
+let g:Lf_PopupShowBorder = 1
+let g:Lf_JumpToExistingWindow = 1
+let g:Lf_PreviewHorizontalPosition = 'left'
+let g:Lf_PopupPreviewPosition = 'right'
+let g:Lf_AutoResize = 0
+let g:Lf_PopupShowStatusline = 0
+let g:Lf_QuickSelect = 1
+let g:Lf_QuickSelectAction = 'v'
+let g:Lf_WindowDisplayMode = 'normal'
+let g:LeaderfLocList = 1
+let g:Lf_ShortcutF = '<C-P>'
+let g:Lf_DefaultExternalTool='rg'
+let g:Lf_ReverseOrder = 1 
+let g:Lf_ShowRelativePath = 0
+let g:Lf_DefaultMode = 'FullPath'
+let g:Lf_CursorBlink = 1
+let g:Lf_PreviewCode = 1
+let g:Lf_PopupAutoAdjustHeight = 0
+let g:Lf_ShowDevIcons = 0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let NERDTreeOpenOnStartup=0 " 不在启动时打开NERDTree
 let NERDTreeWinPos="right" " 将NERDTree置于右侧
@@ -129,13 +150,8 @@ map <leader>nf :NERDTreeFind<cr>
 map <leader>nm :NERDTreeMirror<cr>
 let g:is_fullscreen = 0
 function! ToggleVerticalSize()
-if g:is_fullscreen == 0
-  execute "vertical resize 999"
-  let g:is_fullscreen = 1
-else
-  execute "vertical resize 110"
-  let g:is_fullscreen = 0
-endif
+  execute g:is_fullscreen ? "vertical resize 110" : "vertical resize 999"
+  let g:is_fullscreen = !g:is_fullscreen
 endfunction
 nnoremap <silent> <leader>z :call ToggleVerticalSize()<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -169,10 +185,14 @@ let Tlist_WinWidth = 50
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:fzf_vim = {}
 let g:fzf_follow_links = 1
-let g:fzf_preview_window = ['right,50%', 'ctrl-/']
-let g:fzf_layout = {
-      \ 'window': 'vertical'
-      \ }
+let g:fzf_colors = { 'fg': ['fg', 'Normal'], 'bg': ['bg', 'Normal'], 'hl': ['fg', 'Comment'], 'fg+': ['fg', 'CursorLine', 'CursorColumn', 'Normal'], 'bg+': ['bg', 'CursorLine', 'CursorColumn'], 'hl+': ['fg', 'Statement'], 'info': ['fg', 'PreProc'], 'border': ['fg', 'Ignore'], 'prompt': ['fg', 'Conditional'], 'pointer': ['fg', 'Exception'], 'marker': ['fg', 'Keyword'], 'spinner': ['fg', 'Label'], 'header': ['fg', 'Comment'] }
+let g:fzf_preview_filelist_command = 'rg --files --hidden --follow --no-messages -g "!{.git,node_modules}/*" 2>/dev/null'
+let g:fzf_command_prefix = 'FZF'
+let g:fzf_layout = { 'down': '40%' }
+let g:fzf_layout = { 'window': { 'width': 0.5, 'height': 0.6 } }
+let g:fzf_layout = { 'window': { 'border': 'rounded' } }
+let g:fzf_layout = { 'window': { 'width': 0.5, 'height': 0.6, 'border': 'rounded', 'highlight': 'Comment' } }
+let g:fzf_preview_window = 'right:50%'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set fileencodings=utf-8,gbk,gb18030,gb2312,ucs-bom,cp936,latin1
 if 0
