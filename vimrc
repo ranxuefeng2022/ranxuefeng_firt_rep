@@ -1,54 +1,28 @@
-"function"""""""""""""""""""""""""""""
-function! VisualSelection(direction, extra_filter) range
-    let l:saved_reg = @"
-    execute "normal! vgvy"
-
-    let l:pattern = escape(@", "\\/.*'$^~[]")
-    let l:pattern = substitute(l:pattern, "\n$", "", "")
-
-    if a:direction == 'gv'
-        call CmdLine("Ack '" . l:pattern . "' " )
-    elseif a:direction == 'replace'
-        call CmdLine("%s" . '/'. l:pattern . '/')
-    endif
-
-    let @/ = l:pattern
-    let @" = l:saved_reg
-endfunction
-
-set nocompatible              " be iMproved, require
-filetype off
-" PluginInstall
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'Yggdroot/LeaderF'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'tomasr/molokai'
-call vundle#end()            " required
-filetype plugin indent on    " required
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" PlugInstall
 call plug#begin()
+Plug 'VundleVim/Vundle.vim'
+Plug 'Yggdroot/LeaderF'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tomasr/molokai'
+Plug 'git@github.com:vim-scripts/c.vim.git'
 Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'vim-scripts/taglist.vim'
-Plug 'vim-scripts/vim-easymotion'
+Plug 'git@github.com:easymotion/vim-easymotion.git'
+Plug 'xavierd/clang_complete'
+"Plug 'ycm-core/YouCompleteMe'
 call plug#end()
-" You can revert the settings after the call like so:
-filetype indent off   " Disable file-type-specific indentation
-syntax off            " Disable syntax highlighting
+filetype indent off
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let loaded_matchparen=1
 syntax on
 syntax enable
+colorscheme molokai
 set mousetime=100000
 set mouse=a
 set hlsearch
 set nonu
 set background=dark
-colorscheme molokai
 set ai
 set cindent
 set nocompatible
@@ -59,7 +33,6 @@ set incsearch
 set showmatch
 set matchtime=10
 set nowrapscan
-let g:rainbow_active = 1
 set clipboard=unnamedplus
 set clipboard=autoselect
 set helplang=cn
@@ -81,13 +54,9 @@ set copyindent
 set ttyfast
 set report=0
 set synmaxcol=200
-" Set to auto read when a file is changed from the outside
 set autoread
-au FocusGained,BufEnter * silent! checktime
-" Set 7 lines to the cursor - when moving vertically using j/k
 set foldcolumn=2
 set lazyredraw
-" Linebreak on 500 characters
 set lbr
 set tw=500
 set ai "Auto indent
@@ -98,33 +67,49 @@ set switchbuf+=usetab
 set wildignore+=.*
 set foldenable
 set foldmethod=manual
-autocmd BufRead,BufNewFile * source ~/.vim/bundle/c.vim
-"autocmd BufRead,BufNewFile *  hi Visual ctermfg=white ctermbg=darkblue
+set sessionoptions-=options
+autocmd BufRead,BufNewFile * source ~/.vim/plugged/c.vim/ftplugin/c.vim
+autocmd BufRead,BufNewFile * source ~/.vim/plugged/c.vim/ftplugin/make.vim
+autocmd BufRead,BufNewFile *  hi Visual ctermfg=white ctermbg=darkblue
 autocmd BufRead,BufNewFile *  hi Search ctermfg=white ctermbg=darkblue
+au FocusGained,BufEnter * silent! checktime
 
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Visual mode pressing * or # searches for the current selection
-" Super useful! From an idea by Michael Naumann
+function! VisualSelection(direction, extra_filter) range
+    let l:saved_reg = @"
+    execute "normal! vgvy"
+    let l:pattern = escape(@", "\\/.*'$^~[]")
+    let l:pattern = substitute(l:pattern, "\n$", "", "")
+    if a:direction == 'gv'
+        call CmdLine("Ack '" . l:pattern . "' " )
+    elseif a:direction == 'replace'
+        call CmdLine("%s" . '/'. l:pattern . '/')
+    endif
+    let @/ = l:pattern
+    let @" = l:saved_reg
+endfunction
+
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-vnoremap < <gv
-vnoremap > >gv
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = " "
-nnoremap <leader>r :LeaderfMru<CR>
-nnoremap <leader>b :LeaderfBuffer<CR>
-nnoremap <leader>l :LeaderfFunction<CR>
-nnoremap <leader>f :LeaderfFile<CR>
-nnoremap <C-l> :tabnext<CR>
-nnoremap <C-h> :tabprevious<CR>
-nnoremap <leader>a :FZF<CR>
 vnoremap <Leader>t :s/^\s\+//<CR>:s/\s\+$//<CR>
-set sessionoptions-=options  " 避免保存不必要的选项
+nnoremap <leader>l :LeaderfFunction<CR>
+nnoremap <leader>b :LeaderfBuffer<CR>
+nnoremap <leader>f :LeaderfFile<CR>
+nnoremap <leader>r :LeaderfMru<CR>
+nnoremap <leader>a :FZF<CR>
+nnoremap <C-h> :tabprevious<CR>
+nnoremap <C-l> :tabnext<CR>
 nnoremap <C-g> :pwd<CR>
+nnoremap <C-w> <C-w>w
+nnoremap <C-@> :
+vnoremap < <gv
+vnoremap > >gv
 let g:Lf_PopupHeight = 200
 let g:Lf_NoChdir = 1
 let g:Lf_WorkingDirectoryMode = 'c'
@@ -154,38 +139,13 @@ endif
 endfunction
 nnoremap <silent> <leader>z :call ToggleVerticalSize()<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd VimEnter * if !exists('g:vim_first_open_dir') | let g:vim_first_open_dir = expand('%:p:h') | execute 'cd' g:vim_first_open_dir | endif "设置vim工作目录为第一次打开文件所在目录
-" 创建一个键映射来调用 cscope 查找函数被调用的位置 <C-R>=expand("<cword>")<CR> 用来获取当前光标下的单词，并将其作为参数传递给 cscope 命令
+autocmd VimEnter * if !exists('g:vim_first_open_dir') | let g:vim_first_open_dir = expand('%:p:h') | execute 'cd' g:vim_first_open_dir | endif
 nnoremap <F2> :cs find s <C-R>=expand("<cword>")<CR><CR>
-
-"vim刚打开时候加载cscope和ctags
 autocmd BufRead * if filereadable("cscope.out") | execute "cs add cscope.out" | endif
 autocmd BufRead * if filereadable("tags") | execute "set tags=tags" | endif
-if 0
-set tags+=${HOME}/2362/lk/tags
-set tags+=${HOME}/2362/pl/tags
-set tags+=${HOME}/2362/kernel/tags
-cs add ${HOME}/2362/kernel/cscope.out
-cs add ${HOME}/2362/pl/cscope.out
-cs add ${HOME}/2362/lk/cscope.out
-
-set tags+=${HOME}/2406/lk/tags
-set tags+=${HOME}/2406/pl/tags
-set tags+=${HOME}/2406/kernel/tags
-cs add ${HOME}/2406/kernel/cscope.out
-cs add ${HOME}/2406/pl/cscope.out
-cs add ${HOME}/2406/lk/cscope.out
-
-set tags+=${HOME}/factory/tags
-set tags+=${HOME}/health14/tags
-cs add ${HOME}/factory/cscope.out
-cs add ${HOME}/health14/cscope.out
-endif
 " 自动补全配置
 set completeopt=longest,menu    "让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif "离开插入模式后自动关闭预览窗口
-nnoremap <C-@> :
-nnoremap <C-w> <C-w>w
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#tabline#enabled = 1
@@ -207,13 +167,29 @@ let Tlist_Use_SingleClick = 1
 let Tlist_Use_Right_Window = 0
 let Tlist_WinWidth = 50
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" provide path directly to the library file
- let g:clang_library_path='/usr/lib/llvm-14/lib/libclang-14.so.1'
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"FZF config
 let g:fzf_vim = {}
 let g:fzf_follow_links = 1
 let g:fzf_preview_window = ['right,50%', 'ctrl-/']
 let g:fzf_layout = {
       \ 'window': 'vertical'
       \ }
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set fileencodings=utf-8,gbk,gb18030,gb2312,ucs-bom,cp936,latin1
+if 0
+let g:clang_library_path = '/usr/lib/llvm-10/lib/libclang.so.1'
+let g:clang_complete_macros = 1
+let g:clang_complete_patterns = 1
+let g:clang_auto_select = 1
+let g:clang_complete_auto = 1
+let g:clang_complete_copen = 1
+let g:clang_error_format = ''
+let g:clang_snippets = 1
+let g:clang_snippets_engine = 'clang_complete'
+set completeopt=menu,menuone,noselect
+let g:clang_complete_delay = 50
+let g:clang_user_options='-std=c11 -I/E/code/linux-master'
+let g:clang_complete_diagnostics = 0
+endif
+set dictionary+=~/.vim/words
+vnoremap<C-c> :w! ~/.vim/cvbuf<CR>
+nmap<C-v> :r ~/.vim/cvbuf<CR>

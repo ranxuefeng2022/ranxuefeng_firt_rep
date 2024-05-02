@@ -1,6 +1,0 @@
-export LD_LIBRARY_PATH=/path/to/your/library:$LD_LIBRARY_PATH
-export PATH=/home/ranxuefeng/myhome/usr/bin/:${PATH}
-"fzf --preview='xdg-open {}'
-"fg %$(jobs | fzf | awk '{print $1}' | grep -o '[0-9]*')
-"fzf --preview='identify -format "%wx%h" {}' --preview-window=right:50%
-
