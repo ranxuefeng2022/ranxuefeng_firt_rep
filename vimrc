@@ -1,29 +1,4 @@
-  vnoremap <S-Tab> <gv
-  vnoremap <Tab> >gv
-  
-  inoremap jj <Esc>
-  nnoremap <C-s> :w<CR>
-  vnoremap <Up> <Nop>
-  vnoremap <Down> <Nop>
-  vnoremap <Left> <Nop>
-  vnoremap <Right> <Nop>
-  vnoremap <Right> <Nop>
-  
-  nnoremap <Up> <Nop>
-  nnoremap <Down> <Nop>
-  nnoremap <Left> <Nop>
-  nnoremap <Right> <Nop>
-  
-  inoremap <Up> <Nop>
-  inoremap <Down> <Nop>
-  inoremap <Left> <Nop>
-  inoremap <Right> <Nop>
-  
-  vnoremap <leader>c :s/^/\/\/<CR>
-  vnoremap <leader>cu :s/^\/\//<CR>
-
-
-call plug#begin()
+call plug#begin('~/.vim/plugged')
 Plug 'VundleVim/Vundle.vim'
 Plug 'Yggdroot/LeaderF'
 Plug 'vim-airline/vim-airline'
@@ -33,9 +8,11 @@ Plug 'git@github.com:vim-scripts/c.vim.git'
 Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'vim-scripts/taglist.vim'
-Plug 'git@github.com:easymotion/vim-easymotion.git'
-"Plug 'xavierd/clang_complete'
-"Plug 'ycm-core/YouCompleteMe'
+Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-repeat'
+Plug 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch-fuzzy.vim'
+Plug 'haya14busa/incsearch-easymotion.vim'
 call plug#end()
 filetype indent off
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -98,10 +75,10 @@ autocmd BufRead,BufNewFile * source ~/.vim/plugged/c.vim/ftplugin/c.vim
 autocmd BufRead,BufNewFile * source ~/.vim/plugged/c.vim/ftplugin/make.vim
 autocmd BufRead,BufNewFile *  hi Visual ctermfg=white ctermbg=darkblue
 autocmd BufRead,BufNewFile *  hi Search ctermfg=white ctermbg=darkblue
+autocmd InsertLeave * silent! write
 au FocusGained,BufEnter * silent! checktime
-
 " Return to last edit position when opening files (You want this!)
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Visual mode pressing * or # searches for the current selection
 function! VisualSelection(direction, extra_filter) range
@@ -123,7 +100,7 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = " "
-vnoremap <Leader>t :s/^\s\+//<CR>:s/\s\+$//<CR>
+vnoremap <silent> <leader>d :s/\s\+$//<CR>
 nnoremap <leader>l :LeaderfFunction<CR>
 nnoremap <leader>b :LeaderfBuffer<CR>
 nnoremap <leader>f :LeaderfFile<CR>
@@ -134,14 +111,37 @@ nnoremap <C-l> :tabnext<CR>
 nnoremap <C-g> :pwd<CR>
 nnoremap <C-w> <C-w>w
 nnoremap <C-@> :
-vnoremap < <gv
-vnoremap > >gv
+
+vnoremap <S-Tab> <gv
+vnoremap <Tab> >gv
+
+inoremap jj <Esc>
+nnoremap <C-s> :w<CR>
+vnoremap <Up> <Nop>
+vnoremap <Down> <Nop>
+vnoremap <Left> <Nop>
+vnoremap <Right> <Nop>
+vnoremap <Right> <Nop>
+
+nnoremap <Up> <Nop>
+nnoremap <Down> <Nop>
+nnoremap <Left> <Nop>
+nnoremap <Right> <Nop>
+
+inoremap <Up> <Nop>
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
+
+vnoremap <leader>c :s/^/\/\/<CR>
+vnoremap <leader>cu :s/^\/\//<CR>
+
 let g:Lf_PopupHeight = 200
 let g:Lf_NoChdir = 1
 let g:Lf_WorkingDirectoryMode = 'c'
 let g:Lf_EnableCircularScroll = 1
 let g:Lf_PopupColorscheme = 'onedark'
-let g:Lf_FollowLinks = 1 
+let g:Lf_FollowLinks = 1
 let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewPopupWidth = 200
 let g:Lf_PopupHighlightGroup = 'Normal'
@@ -159,7 +159,7 @@ let g:Lf_WindowDisplayMode = 'normal'
 let g:LeaderfLocList = 1
 let g:Lf_ShortcutF = '<C-P>'
 let g:Lf_DefaultExternalTool='rg'
-let g:Lf_ReverseOrder = 1 
+let g:Lf_ReverseOrder = 1
 let g:Lf_ShowRelativePath = 0
 let g:Lf_DefaultMode = 'FullPath'
 let g:Lf_CursorBlink = 1
@@ -167,8 +167,8 @@ let g:Lf_PreviewCode = 1
 let g:Lf_PopupAutoAdjustHeight = 0
 let g:Lf_ShowDevIcons = 0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let NERDTreeOpenOnStartup=0 " 不在启动时打开NERDTree
-let NERDTreeWinPos="right" " 将NERDTree置于右侧
+let NERDTreeOpenOnStartup=0
+let NERDTreeWinPos="left" 
 map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark
 map <leader>nf :NERDTreeFind<cr>
@@ -178,15 +178,15 @@ function! ToggleVerticalSize()
   execute g:is_fullscreen ? "vertical resize 110" : "vertical resize 999"
   let g:is_fullscreen = !g:is_fullscreen
 endfunction
+autocmd VimLeave * NERDTreeClose
 nnoremap <silent> <leader>z :call ToggleVerticalSize()<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd VimEnter * if !exists('g:vim_first_open_dir') | let g:vim_first_open_dir = expand('%:p:h') | execute 'cd' g:vim_first_open_dir | endif
 nnoremap <F2> :cs find s <C-R>=expand("<cword>")<CR><CR>
 autocmd BufRead * if filereadable("cscope.out") | execute "cs add cscope.out" | endif
 autocmd BufRead * if filereadable("tags") | execute "set tags=tags" | endif
-" 自动补全配置
-set completeopt=longest,menu    "让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif "离开插入模式后自动关闭预览窗口
+set completeopt=longest,menu 
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#tabline#enabled = 1
@@ -210,7 +210,7 @@ let Tlist_WinWidth = 50
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:fzf_vim = {}
 let g:fzf_follow_links = 1
-let g:fzf_colors = { 'fg': ['fg', 'Normal'], 'bg': ['bg', 'Normal'], 'hl': ['fg', 'Comment'], 'fg+': ['fg', 'CursorLine', 'CursorColumn', 'Normal'], 'bg+': ['bg', 'CursorLine', 'CursorColumn'], 'hl+': ['fg', 'Statement'], 'info': ['fg', 'PreProc'], 'border': ['fg', 'Ignore'], 'prompt': ['fg', 'Conditional'], 'pointer': ['fg', 'Exception'], 'marker': ['fg', 'Keyword'], 'spinner': ['fg', 'Label'], 'header': ['fg', 'Comment'] }
+let g:fzf_colors = { 'fg': ['fg', 'Normal'], 'bg': ['bg', 'Normal'], 'hl': ['fg', 'Comment'], 'fg+': ['fg', 'CursorLine', 'CursorColumn', 'Normal'], 'bg+': ['bg', 'CursorLine', 'CursorColumn'], 'hl+': ['fg', 'Statement'], 'info': ['fg', 'PreProc'], 'border': ['fg', 'Ignore'], 'prompt': ['fg', 'Conditional'], 'pointer': ['fg', 'Exception'], 'marker': ['g', 'Keyword'], 'spinner': ['fg', 'Label'], 'header': ['fg', 'Comment'] }
 let g:fzf_preview_filelist_command = 'rg --files --hidden --follow --no-messages -g "!{.git,node_modules}/*" 2>/dev/null'
 let g:fzf_command_prefix = 'FZF'
 let g:fzf_layout = { 'down': '40%' }
@@ -220,21 +220,42 @@ let g:fzf_layout = { 'window': { 'width': 0.5, 'height': 0.6, 'border': 'rounded
 let g:fzf_preview_window = 'right:50%'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set fileencodings=utf-8,gbk,gb18030,gb2312,ucs-bom,cp936,latin1
-if 0
-let g:clang_library_path = '/usr/lib/llvm-10/lib/libclang.so.1'
-let g:clang_complete_macros = 1
-let g:clang_complete_patterns = 1
-let g:clang_auto_select = 1
-let g:clang_complete_auto = 1
-let g:clang_complete_copen = 1
-let g:clang_error_format = ''
-let g:clang_snippets = 1
-let g:clang_snippets_engine = 'clang_complete'
-set completeopt=menu,menuone,noselect
-let g:clang_complete_delay = 50
-let g:clang_user_options='-std=c11 -I/E/code/linux-master'
-let g:clang_complete_diagnostics = 0
-endif
 set dictionary+=~/.vim/words
 vnoremap<C-c> :w! ~/.vim/cvbuf<CR>
-nmap<C-v> :r ~/.vim/cvbuf<CR>
+nnoremap<C-v> :r ~/.vim/cvbuf<CR>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+"nmap s <Plug>(easymotion-overwin-f)
+" or
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Turn on case-insensitive feature
+let g:EasyMotion_smartcase = 1
+let g:EasyMotion_use_smartsign_us = 1 " US layout
+
+" JK motions: Line motions
+map <C-j> <Plug>(easymotion-j)
+map <C-k> <Plug>(easymotion-k)
+
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+
+map  <Leader>W <Plug>(easymotion-bd-w)
+nmap <Leader>W <Plug>(easymotion-overwin-w)
+
+function! s:config_easyfuzzymotion(...) abort
+  return extend(copy({
+  \   'converters': [incsearch#config#fuzzyword#converter()],
+  \   'modules': [incsearch#config#easymotion#module({'overwin': 1})],
+  \   'keymap': {"\<CR>": '<Over>(easymotion)'},
+  \   'is_expr': 0,
+  \   'is_stay': 1
+  \ }), get(a:, 1, {}))
+endfunction
+
+noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
