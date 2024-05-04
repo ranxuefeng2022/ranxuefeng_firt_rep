@@ -1,3 +1,28 @@
+  vnoremap <S-Tab> <gv
+  vnoremap <Tab> >gv
+  
+  inoremap jj <Esc>
+  nnoremap <C-s> :w<CR>
+  vnoremap <Up> <Nop>
+  vnoremap <Down> <Nop>
+  vnoremap <Left> <Nop>
+  vnoremap <Right> <Nop>
+  vnoremap <Right> <Nop>
+  
+  nnoremap <Up> <Nop>
+  nnoremap <Down> <Nop>
+  nnoremap <Left> <Nop>
+  nnoremap <Right> <Nop>
+  
+  inoremap <Up> <Nop>
+  inoremap <Down> <Nop>
+  inoremap <Left> <Nop>
+  inoremap <Right> <Nop>
+  
+  vnoremap <leader>c :s/^/\/\/<CR>
+  vnoremap <leader>cu :s/^\/\//<CR>
+
+
 call plug#begin()
 Plug 'VundleVim/Vundle.vim'
 Plug 'Yggdroot/LeaderF'
