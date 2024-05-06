@@ -13,6 +13,14 @@ Plug 'easymotion/vim-easymotion'
 Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'
 Plug 'haya14busa/incsearch-easymotion.vim'
+
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'Shougo/ddc.vim'
+Plug 'shun/ddc-vim-lsp'
+Plug 'vim-scripts/c.vim'
 call plug#end()
 filetype indent off
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -207,4 +215,41 @@ function! s:config_easyfuzzymotion(...) abort
   \ }), get(a:, 1, {}))
 endfunction
 noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+inoremap <C-h> <left>
+  inoremap <C-j> <down>
+  inoremap <C-k> <up>
+  inoremap <C-l> <right>
+  
+  noremap <silent><leader>1 1gt<cr>
+  noremap <silent><leader>2 2gt<cr> 
+  noremap <silent><leader>3 3gt<cr>
+  noremap <silent><leader>4 4gt<cr>
+  noremap <silent><leader>5 5gt<cr>
+  noremap <silent><leader>6 6gt<cr>
+  noremap <silent><leader>7 7gt<cr>
+  noremap <silent><leader>8 8gt<cr>
+  noremap <silent><leader>9 9gt<cr>
+  noremap <silent><leader>0 10gt<cr>
+      
+  " 左移 tab
+  function! Tab_MoveLeft()
+      let l:tabnr = tabpagenr() - 2
+      if l:tabnr >= 0
+          exec 'tabmove '.l:tabnr
+      endif
+  endfunc 
+  
+  " 右移 tab
+  function! Tab_MoveRight()
+      let l:tabnr = tabpagenr() + 1
+      if l:tabnr <= tabpagenr('$')
+          exec 'tabmove '.l:tabnr
+      endif
+  endfunc
+  
+  noremap <silent><m-left> :call Tab_MoveLeft()<cr>
+  noremap <silent><m-right> :call Tab_MoveRight()<cr>
+  set noet 
+
 
