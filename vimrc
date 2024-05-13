@@ -21,6 +21,7 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'Shougo/ddc.vim'
 Plug 'shun/ddc-vim-lsp'
 Plug 'vim-scripts/c.vim'
+Plug 'voldikss/vim-floaterm'
 call plug#end()
 filetype indent off
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -31,7 +32,6 @@ colorscheme molokai
 set mousetime=100000
 set mouse=a
 set hlsearch
-set nonu
 set background=dark
 set ai
 set cindent
@@ -51,13 +51,13 @@ set noswapfile
 set nowb
 set mousemodel=extend
 set smartcase
+set signcolumn=yes
 set title
 set tabstop=4
 set shiftwidth=4
 set nowritebackup
 set nobackup
 set noautowrite
-set nonu
 set history=50
 set copyindent
 set ttyfast
@@ -69,6 +69,7 @@ set lazyredraw
 set lbr
 set tw=500
 set ai "Auto indent
+set nu
 set si "Smart indent
 set wrap "Wrap lines
 set switchbuf+=useopen
@@ -107,6 +108,8 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = " "
+let g:Lf_FollowLinks = 1
+let g:Lf_UseCache = 0
 vnoremap <silent> <leader>d :s/\s\+$//<CR>
 nnoremap <leader>l :LeaderfFunction<CR>
 nnoremap <leader>b :LeaderfBuffer<CR>
@@ -115,7 +118,6 @@ nnoremap <leader>r :LeaderfMru<CR>
 nnoremap <leader>a :FZF<CR>
 nnoremap <C-h> :tabprevious<CR>
 nnoremap <C-l> :tabnext<CR>
-nnoremap <C-g> :pwd<CR>
 nnoremap <C-w> <C-w>w
 nnoremap <C-@> :
 vnoremap <S-Tab> <gv
@@ -138,8 +140,14 @@ inoremap <Down> <Nop>
 inoremap <Left> <Nop>
 inoremap <Right> <Nop>
 
+inoremap <C-h> <left>
+inoremap <C-j> <down>
+inoremap <C-k> <up>
+inoremap <C-l> <right>
+
 vnoremap <leader>c :s/^/\/\/<CR>
 vnoremap <leader>cu :s/^\/\//<CR>
+nnoremap # #N
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let NERDTreeOpenOnStartup=0
 let NERDTreeWinPos="left"
@@ -215,41 +223,5 @@ function! s:config_easyfuzzymotion(...) abort
   \ }), get(a:, 1, {}))
 endfunction
 noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-inoremap <C-h> <left>
-  inoremap <C-j> <down>
-  inoremap <C-k> <up>
-  inoremap <C-l> <right>
-  
-  noremap <silent><leader>1 1gt<cr>
-  noremap <silent><leader>2 2gt<cr> 
-  noremap <silent><leader>3 3gt<cr>
-  noremap <silent><leader>4 4gt<cr>
-  noremap <silent><leader>5 5gt<cr>
-  noremap <silent><leader>6 6gt<cr>
-  noremap <silent><leader>7 7gt<cr>
-  noremap <silent><leader>8 8gt<cr>
-  noremap <silent><leader>9 9gt<cr>
-  noremap <silent><leader>0 10gt<cr>
-      
-  " 左移 tab
-  function! Tab_MoveLeft()
-      let l:tabnr = tabpagenr() - 2
-      if l:tabnr >= 0
-          exec 'tabmove '.l:tabnr
-      endif
-  endfunc 
-  
-  " 右移 tab
-  function! Tab_MoveRight()
-      let l:tabnr = tabpagenr() + 1
-      if l:tabnr <= tabpagenr('$')
-          exec 'tabmove '.l:tabnr
-      endif
-  endfunc
-  
-  noremap <silent><m-left> :call Tab_MoveLeft()<cr>
-  noremap <silent><m-right> :call Tab_MoveRight()<cr>
-  set noet 
-
-
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap<leader>t :terminal<CR>
