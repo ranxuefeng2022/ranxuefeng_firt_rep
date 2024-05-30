@@ -1,3 +1,10 @@
+" Move lines in normal mode
+nnoremap <S-j> :m .+1<CR>==
+nnoremap <S-k> :m .-2<CR>==
+" Move lines in visual mode
+vnoremap <S-j> :m '>+1<CR>gv=gv
+vnoremap <S-k> :m '<-2<CR>gv=gv
+
 call plug#begin()
 Plug 'VundleVim/Vundle.vim'
 Plug 'Yggdroot/LeaderF'
