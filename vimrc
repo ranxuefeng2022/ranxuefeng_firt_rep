@@ -1,3 +1,6 @@
+nnoremap f :execute "normal! \<C-o>"<CR>
+
+
 " Move lines in normal mode
 nnoremap <S-j> :m .+1<CR>==
 nnoremap <S-k> :m .-2<CR>==
