@@ -1,1 +1,8 @@
-linux将某个目录及子目录建立软链接到某个文件夹下，且软链接不重名
+vmware安装事项：
+1：apt install open-vm-tools-desktop
+2：apt install git
+3：apt install cscope
+4：apt install ctags
+6：apt install tilix
+7：apt install ranger
+8：apt install fzf
