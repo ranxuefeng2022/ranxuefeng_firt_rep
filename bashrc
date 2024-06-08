@@ -27,3 +27,6 @@
        job=$(jobs | fzf | awk '{print $1}' | grep -o '[0-9]*')
            fg %$job
     }
+    f() {
+    	fg
+    }
