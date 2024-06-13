@@ -1,0 +1,2 @@
+/root/ko/hello.o
+
