@@ -1,15 +1,5 @@
-nnoremap f :execute "normal! \<C-o>"<CR>
-
-
-" Move lines in normal mode
-nnoremap <S-j> :m .+1<CR>==
-nnoremap <S-k> :m .-2<CR>==
-" Move lines in visual mode
-vnoremap <S-j> :m '>+1<CR>gv=gv
-vnoremap <S-k> :m '<-2<CR>gv=gv
-
-call plug#begin()
-Plug 'VundleVim/Vundle.vim'
+call plug#begin('~/.vim/plugged')
+Plug 'tpope/vim-fugitive'
 Plug 'Yggdroot/LeaderF'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -17,25 +7,20 @@ Plug 'tomasr/molokai'
 Plug 'git@github.com:vim-scripts/c.vim.git'
 Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'vim-scripts/taglist.vim'
-Plug 'tpope/vim-repeat'
 Plug 'easymotion/vim-easymotion'
-Plug 'haya14busa/incsearch.vim'
-Plug 'haya14busa/incsearch-fuzzy.vim'
 Plug 'haya14busa/incsearch-easymotion.vim'
 
-Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'Shougo/ddc.vim'
-Plug 'shun/ddc-vim-lsp'
 Plug 'vim-scripts/c.vim'
 Plug 'voldikss/vim-floaterm'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'francoiscabrol/ranger.vim'
 call plug#end()
 filetype indent off
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let loaded_matchparen=1
+set t_Co=256
 syntax on
 syntax enable
 colorscheme molokai
@@ -74,12 +59,13 @@ set ttyfast
 set report=0
 set synmaxcol=200
 set autoread
-set foldcolumn=2
+set foldcolumn=0
 set lazyredraw
 set lbr
 set tw=500
 set ai "Auto indent
 set nu
+set relativenumber
 set si "Smart indent
 set wrap "Wrap lines
 set switchbuf+=useopen
@@ -119,13 +105,13 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = " "
 let g:Lf_FollowLinks = 1
-let g:Lf_UseCache = 0
 vnoremap <silent> <leader>d :s/\s\+$//<CR>
 nnoremap <leader>l :LeaderfFunction<CR>
+nnoremap <leader>a :FZF<CR>
 nnoremap <leader>b :LeaderfBuffer<CR>
 nnoremap <leader>f :LeaderfFile<CR>
 nnoremap <leader>r :LeaderfMru<CR>
-nnoremap <leader>a :FZF<CR>
+nnoremap <leader>c :source ~/.vim/plugged/c.vim/ftplugin/c.vim<CR>
 nnoremap <C-h> :tabprevious<CR>
 nnoremap <C-l> :tabnext<CR>
 nnoremap <C-w> <C-w>w
@@ -155,8 +141,6 @@ inoremap <C-j> <down>
 inoremap <C-k> <up>
 inoremap <C-l> <right>
 
-vnoremap <leader>c :s/^/\/\/<CR>
-vnoremap <leader>cu :s/^\/\//<CR>
 nnoremap # #N
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let NERDTreeOpenOnStartup=0
@@ -206,8 +190,8 @@ let g:fzf_vim_dir = expand('%:p:h')
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set fileencodings=utf-8,gbk,gb18030,gb2312,ucs-bom,cp936,latin1
 set dictionary+=~/.vim/words
-vnoremap<C-c> :w! ~/.vim/cvbuf<CR>
-nnoremap<C-v> :r ~/.vim/cvbuf<CR>
+vnoremap<C-c> :w! ~/.vim/cvbuf.c<CR>
+nnoremap<C-v> :r ~/.vim/cvbuf.c<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 nmap s <Plug>(easymotion-overwin-f2)
@@ -235,3 +219,16 @@ endfunction
 noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap<leader>t :terminal<CR>
+let g:ranger_map_keys = 0
+map <leader>g :Ranger<CR>
+
+" Move lines in normal mode
+nnoremap <S-j> :m .+1<CR>==
+nnoremap <S-k> :m .-2<CR>==
+
+" Move lines in visual mode
+vnoremap <S-j> :m '>+1<CR>gv=gv
+vnoremap <S-k> :m '<-2<CR>gv=gv
+
+nnoremap f :execute "normal! \<C-o>"<CR>
+
