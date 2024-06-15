@@ -26,3 +26,8 @@ bind -n C-j select-pane -D
 bind -n C-k select-pane -U
 bind -n C-l select-pane -R
 
+neovim
+pip3 install --upgrade pynvim
+sudo apt-add-repository ppa:neovim-ppa/stable
+sudo apt-get update
+sudo apt-get install neovim
