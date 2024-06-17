@@ -31,3 +31,18 @@ pip3 install --upgrade pynvim
 sudo apt-add-repository ppa:neovim-ppa/stable
 sudo apt-get update
 sudo apt-get install neovim
+
+vim编译配置：
+./configure --with-features=huge \
+--enable-gui=gtk3 \
+--enable-multibyte \
+--enable-rubyinterp=yes \
+--enable-pythoninterp=yes \
+--enable-python3interp=yes \
+--enable-perlinterp=yes \
+--enable-luainterp=yes \
+--enable-cscope \
+--prefix=/usr/bin \
+--with-xpm \
+--with-features=big \
+--enable-clipboard
