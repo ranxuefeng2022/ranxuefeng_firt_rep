@@ -42,7 +42,8 @@ vim编译配置：
 --enable-perlinterp=yes \
 --enable-luainterp=yes \
 --enable-cscope \
---prefix=/usr/bin \
+--prefix=/usr/local/bin \
 --with-xpm \
 --with-features=big \
+--enable-terminal \
 --enable-clipboard
