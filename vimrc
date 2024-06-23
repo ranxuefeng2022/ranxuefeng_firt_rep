@@ -120,12 +120,13 @@ vnoremap <S-Tab> <gv
 vnoremap <Tab> >gv
 
 vnoremap y "ay
-vnoremap p "ap
+nnoremap p "ap
+nnoremap p "aP
 vnoremap c "ay
 vnoremap C "ap
 nnoremap <C-s> :w<CR>
-nnoremap <S-s> :vsp<CR>
-nnoremap <S-x> :sp<CR>
+nnoremap <S-s> :sp<CR>
+nnoremap <S-x> :vsp<CR>
 
 inoremap jj <Esc>
 vnoremap <Up> <Nop>
