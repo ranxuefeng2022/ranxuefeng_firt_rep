@@ -121,9 +121,8 @@ vnoremap <Tab> >gv
 
 vnoremap y "ay
 nnoremap p "ap
-nnoremap p "aP
-vnoremap c "ay
-vnoremap C "ap
+nnoremap P "aP
+
 nnoremap <C-s> :w<CR>
 nnoremap <S-s> :sp<CR>
 nnoremap <S-x> :vsp<CR>
