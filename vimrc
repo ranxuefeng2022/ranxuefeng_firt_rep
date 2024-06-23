@@ -118,6 +118,8 @@ nnoremap <C-w> <C-w>w
 nnoremap <C-@> :
 vnoremap <S-Tab> <gv
 vnoremap <Tab> >gv
+vnoremap y "ay
+vnoremap p "ap
 
 inoremap jj <Esc>
 vnoremap <Up> <Nop>
