@@ -124,6 +124,8 @@ vnoremap p "ap
 vnoremap c "ay
 vnoremap C "ap
 nnoremap <C-s> :w<CR>
+nnoremap <S-s> :vsp<CR>
+nnoremap <S-x> :sp<CR>
 
 inoremap jj <Esc>
 vnoremap <Up> <Nop>
