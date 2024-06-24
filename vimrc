@@ -123,9 +123,13 @@ vnoremap y "ay
 nnoremap p "ap
 nnoremap P "aP
 
-nnoremap <C-s> :w<CR>
-nnoremap <S-s> :sp<CR>
-nnoremap <S-x> :vsp<CR>
+nnoremap <S-s> :w<CR>
+nnoremap a :vsp<CR>
+nnoremap <S-Left> :vertical resize -3<CR>
+nnoremap <S-Right> :vertical resize +3<CR>
+nnoremap <S-Up> :resize -3<CR>
+nnoremap <S-Down> :resize +3<CR>
+
 
 inoremap jj <Esc>
 vnoremap <Up> <Nop>
@@ -239,4 +243,6 @@ vnoremap <S-j> :m '>+1<CR>gv=gv
 vnoremap <S-k> :m '<-2<CR>gv=gv
 
 nnoremap f :execute "normal! \<C-o>"<CR>
+nnoremap F [[
+
 
