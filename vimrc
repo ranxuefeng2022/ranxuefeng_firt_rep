@@ -107,11 +107,14 @@ let mapleader = " "
 let g:Lf_FollowLinks = 1
 vnoremap <silent> <leader>d :s/\s\+$//<CR>
 nnoremap <leader>l :LeaderfFunction<CR>
-nnoremap <leader>a :FZF<CR>
-nnoremap <leader>b :LeaderfBuffer<CR>
-nnoremap <leader>f :LeaderfFile<CR>
+nnoremap <leader>f :Files<CR>
+"nnoremap <leader>f :FZF<CR>
+nnoremap <silent> <Leader>b :Buffers<CR>
+
+"nnoremap <leader>b :LeaderfBuffer<CR>
+nnoremap <leader>a :LeaderfFile<CR>
 nnoremap <leader>r :LeaderfMru<CR>
-nnoremap <leader>c :source ~/.vim/plugged/c.vim/ftplugin/c.vim<CR>
+nnoremap <leader>c :tabdo:source ~/.vim/plugged/c.vim/ftplugin/c.vim<CR>
 nnoremap <C-h> :tabprevious<CR>
 nnoremap <C-l> :tabnext<CR>
 nnoremap <C-w> <C-w>w
@@ -189,6 +192,7 @@ let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline_theme='solarized_flood'
 let g:airline_powerline_fonts = 1
+let g:airline_section_c = '%{getcwd()}'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <silent> <F3> :TlistToggle<CR>
 let Tlist_WinWidth = 50
@@ -199,6 +203,7 @@ let Tlist_WinWidth = 50
 let g:fzf_vim = {}
 let g:fzf_follow_links = 1
 let g:fzf_vim_dir = expand('%:p:h')
+let $FZF_DEFAULT_OPTS='--height 100% --layout=reverse'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set fileencodings=utf-8,gbk,gb18030,gb2312,ucs-bom,cp936,latin1
 set dictionary+=~/.vim/words
@@ -244,5 +249,29 @@ vnoremap <S-k> :m '<-2<CR>gv=gv
 
 nnoremap f :execute "normal! \<C-o>"<CR>
 nnoremap F [[
+
+highlight WarningMsg ctermfg=yellow guifg=yellow
+function! HighlightSelectedText()
+	let saved_reg = getreg('"')
+	let saved_regtype = getregtype('"')
+	let pos =getpos(".")
+	normal! gv"xy
+	call setreg('"', saved_reg, saved_regtype)
+	call setpos('.', pos)
+	let keyword = @x
+	execute 'match WarningMsg /' . keyword . '/'
+endfunction
+vnoremap 1 :call HighlightSelectedText() <CR> 
+
+
+
+
+
+
+
+
+
+
+
 
 
