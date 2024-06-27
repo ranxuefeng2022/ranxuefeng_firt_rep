@@ -16,6 +16,9 @@ Plug 'vim-scripts/c.vim'
 Plug 'voldikss/vim-floaterm'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'francoiscabrol/ranger.vim'
+Plug 'maralla/completor.vim'
+"Plug 'wfxr/minimap.vim'
+"Plug 'unblevable/quick-scope'
 call plug#end()
 filetype indent off
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -106,7 +109,8 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 let mapleader = " "
 let g:Lf_FollowLinks = 1
 vnoremap <silent> <leader>d :s/\s\+$//<CR>
-nnoremap <leader>l :LeaderfFunction<CR>
+"nnoremap <leader>l :LeaderfFunction<CR>
+nnoremap <leader>l :BTags<CR>
 nnoremap <leader>f :Files<CR>
 "nnoremap <leader>f :FZF<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
@@ -119,8 +123,10 @@ nnoremap <C-h> :tabprevious<CR>
 nnoremap <C-l> :tabnext<CR>
 nnoremap <C-w> <C-w>w
 nnoremap <C-@> :
-vnoremap <S-Tab> <gv
-vnoremap <Tab> >gv
+"vnoremap <S-Tab> <gv
+"vnoremap <Tab> >gv
+vnoremap < <gv
+vnoremap > >gv
 
 vnoremap y "ay
 nnoremap p "ap
@@ -133,8 +139,9 @@ nnoremap <S-Right> :vertical resize +3<CR>
 nnoremap <S-Up> :resize -3<CR>
 nnoremap <S-Down> :resize +3<CR>
 
-
 inoremap jj <Esc>
+inoremap > ->
+
 vnoremap <Up> <Nop>
 vnoremap <Down> <Nop>
 vnoremap <Left> <Nop>
@@ -235,7 +242,7 @@ function! s:config_easyfuzzymotion(...) abort
 endfunction
 noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap<leader>t :terminal<CR>
+nnoremap<leader>t :FloatermToggle<CR>
 let g:ranger_map_keys = 0
 map <leader>g :Ranger<CR>
 
@@ -263,12 +270,8 @@ function! HighlightSelectedText()
 endfunction
 vnoremap 1 :call HighlightSelectedText() <CR> 
 
-
-
-
-
-
-
+set list
+set listchars=tab:~\ ,space:.
 
 
 
