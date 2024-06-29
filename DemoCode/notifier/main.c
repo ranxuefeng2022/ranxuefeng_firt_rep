@@ -1,7 +1,9 @@
 #include <linux/init.h>
 #include <linux/notifier.h>
 #include <linux/module.h>
+#include <linux/kernel.h>
 #include <linux/kern_levels.h>
+#include "voter.h"
 
 static BLOCKING_NOTIFIER_HEAD(demo_notifier);
 static struct notifier_block demo_nb;
@@ -36,6 +38,8 @@ static int __init demo_init(void) {
 	int data = 2;
 	demo_nb.notifier_call = demo_notifier_cb;
 	demo_reg_notifier(&demo_nb);
+	WARN_ON(1);
+	dump_stack();
 	demo_notifier_broadcast(1, &data);
 
 	return 0;
