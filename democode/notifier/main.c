@@ -15,6 +15,10 @@
 #include "voter.h"
 
 #define LOG(fmt, ...) printk(KERN_ERR "%s[%d]: " fmt, __func__, __LINE__, ##__VA_ARGS__)
+#define MIN_VOTER1 "MIN_VOTER1"
+#define MIN_VOTER2 "MIN_VOTER2"
+#define ANY_VOTER1 "ANY_VOTER1"
+#define ANY_VOTER2 "ANY_VOTER2"
 
 /*
 #define LOG(fmt, ...) \
@@ -38,6 +42,9 @@ struct demo_chip {
 	struct delayed_work event_work;
 	struct workqueue_struct *event_wq;
 
+	struct votable *votable_min;
+	struct votable *votable_max;
+	struct votable *votable_any;
 };
 static struct demo_chip *this_chip;
 
@@ -90,9 +97,37 @@ static void demo_event_work(struct work_struct *work)
 
 	LOG("demo work execed! log level:%d\n", chip->debug_level);
 }
+
+static int demo_votable_min(struct votable *votable, void *data, int value, const char *client)
+{
+	struct demo_chip *chip = data;
+	int ret = 0;
+
+	LOG("demo votable, debug_level:%d client %s vote %d\n", chip->debug_level, client, value);
+	return ret;
+}
+
+static int demo_votable_max(struct votable *votable, void *data, int value, const char *client)
+{
+	struct demo_chip *chip = data;
+	int ret = 0;
+
+	LOG("demo votable, debug_level:%d client %s vote %d\n", chip->debug_level, client, value);
+	return ret;
+}
+
+static int demo_votable_any(struct votable *votable, void *data, int value, const char *client)
+{
+	struct demo_chip *chip = data;
+	int ret = 0;
+
+	LOG("demo votable, debug_level:%d client %s vote %d\n", chip->debug_level, client, value);
+	return ret;
+}
 /*************************************************************************************/
 static int __init demo_init(void) {
 	struct platform_device *pdev = &g_pdev; 
+	static struct demo_chip *chip;
 	int data = 2;
 
 	this_chip = kmalloc(sizeof(*this_chip), GFP_KERNEL);
@@ -102,50 +137,82 @@ static int __init demo_init(void) {
 		return -ENOMEM;
 	}
 
-	this_chip->dev = &pdev->dev;
-	this_chip->demo_nb.notifier_call = demo_notifier_cb;
-	this_chip->debug_level = 3;
-	platform_set_drvdata(pdev, this_chip);
+	chip = this_chip;
+	chip->dev = &pdev->dev;
+	chip->demo_nb.notifier_call = demo_notifier_cb;
+	chip->debug_level = 3;
+
+	platform_set_drvdata(pdev, chip);
+
+	/*create votable*/
+	chip->votable_min = create_votable("DEMO_VOTABLE_MIN", VOTE_MIN, demo_votable_min, chip);
+	chip->votable_max = create_votable("DEMO_VOTABLE_MAX", VOTE_MAX, demo_votable_max, chip);
+	chip->votable_any = create_votable("DEMO_VOTABLE_ANY", VOTE_SET_ANY, demo_votable_any, chip);
+	if (IS_ERR_OR_NULL(chip->votable_min) 
+			|| IS_ERR_OR_NULL(chip->votable_max) 
+			|| IS_ERR_OR_NULL(chip->votable_any)) {
+
+		LOG("failed to create votable:%d %d %d\n", 
+				IS_ERR_OR_NULL(chip->votable_min),
+				IS_ERR_OR_NULL(chip->votable_max),
+				IS_ERR_OR_NULL(chip->votable_any));
+		goto CREATE_VOTABLE_ERR;
+	}
+
+	vote(chip->votable_min, MIN_VOTER1, true, 100);
+	vote(chip->votable_min, MIN_VOTER2, true, 200);
+	vote(chip->votable_min, MIN_VOTER2, true, 50);
+	vote(chip->votable_min, MIN_VOTER1, true, 50);
+
+	vote(chip->votable_any, ANY_VOTER1, true, 0);
+	vote(chip->votable_any, ANY_VOTER2, false, 0);
 
 	/*notifier*/
-	demo_reg_notifier(&this_chip->demo_nb);
+	demo_reg_notifier(&chip->demo_nb);
 	demo_notifier_broadcast(1, &data);
 
 	/*work*/
-	INIT_WORK(&this_chip->sys_work, demo_work);
-	INIT_DELAYED_WORK(&this_chip->dwork, demo_delayed_work);
-	INIT_DELAYED_WORK(&this_chip->event_work, demo_event_work);
+	INIT_WORK(&chip->sys_work, demo_work);
+	INIT_DELAYED_WORK(&chip->dwork, demo_delayed_work);
+	INIT_DELAYED_WORK(&chip->event_work, demo_event_work);
 
-	this_chip->event_wq = alloc_ordered_workqueue("demo_event",
+
+	chip->event_wq = alloc_ordered_workqueue("demo_event",
 			WQ_FREEZABLE);
 
-	queue_delayed_work(this_chip->event_wq, &this_chip->event_work,
+	queue_delayed_work(chip->event_wq, &chip->event_work,
 			msecs_to_jiffies(1000));
 
-	schedule_delayed_work(&this_chip->dwork, msecs_to_jiffies(20000));
-	queue_work(system_long_wq, &this_chip->sys_work);
-	flush_work(&this_chip->sys_work);
+	schedule_delayed_work(&chip->dwork, msecs_to_jiffies(20000));
+	queue_work(system_long_wq, &chip->sys_work);
+	flush_work(&chip->sys_work);
 
 	/*set pri data*/
-	platform_set_drvdata(pdev, this_chip);
+	platform_set_drvdata(pdev, chip);
 
 	//WARN_ON(1);
 	//dump_stack();
 
 	return 0;
+
+CREATE_VOTABLE_ERR:
+	kfree(chip);
+	return -EINVAL;
 }
 
 static void __exit demo_exit(void) {
-	LOG("%s\n", __func__);
-	if (this_chip) {
-		LOG("free this_chip !!!!\n");
-		kfree(this_chip);
-	}
-	cancel_delayed_work_sync(&this_chip->dwork);
-	flush_work(&this_chip->sys_work);
-	//cancel_delayed_work_sync(&this_chip->event_work);
-	flush_workqueue(this_chip->event_wq);
-	destroy_workqueue(this_chip->event_wq);
+	struct demo_chip *chip = this_chip;
+
+	LOG("\n");
+	cancel_delayed_work_sync(&chip->dwork);
+	flush_work(&chip->sys_work);
+	//cancel_delayed_work_sync(&chip->event_work);
+	flush_workqueue(chip->event_wq);
+	destroy_workqueue(chip->event_wq);
+	destroy_votable(chip->votable_any);
+	destroy_votable(chip->votable_min);
+	destroy_votable(chip->votable_max);
+	kfree(chip);
 }
 
 module_init(demo_init);

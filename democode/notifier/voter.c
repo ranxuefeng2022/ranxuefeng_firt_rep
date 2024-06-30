@@ -486,6 +486,7 @@ out:
 	unlock_votable(votable);
 	return rc;
 }
+EXPORT_SYMBOL_GPL(vote);
 
 /**
  * vote_override() -
@@ -746,7 +747,7 @@ struct votable *create_votable(const char *name,
 		return ERR_PTR(-EEXIST);
 
 	if (debug_root == NULL) {
-		debug_root = debugfs_create_dir("pmic-votable", NULL);
+		debug_root = debugfs_create_dir("demo-xuefeng-votable", NULL);
 		if (!debug_root) {
 			pr_err("Couldn't create debug dir\n");
 			return ERR_PTR(-ENOMEM);
@@ -820,6 +821,7 @@ struct votable *create_votable(const char *name,
 				  &effective_client_ops);
 	return votable;
 }
+EXPORT_SYMBOL_GPL(create_votable);
 
 void destroy_votable(struct votable *votable)
 {
@@ -841,3 +843,4 @@ void destroy_votable(struct votable *votable)
 	kfree(votable->name);
 	kfree(votable);
 }
+EXPORT_SYMBOL_GPL(destroy_votable);
