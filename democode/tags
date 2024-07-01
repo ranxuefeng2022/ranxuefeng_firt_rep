@@ -1,0 +1,437 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ANY_VOTER1	notifier/main.c	20;"	d	file:
+ANY_VOTER2	notifier/main.c	21;"	d	file:
+ARRAY_SIZE	datastruct/datastructure.c	1;"	d	file:
+BATT_HIGH_AVG_CURRENT	power/bq28z610.c	820;"	d	file:
+BMS_PROP_AUTHENTIC	power/bq28z610.h	/^	BMS_PROP_AUTHENTIC,$/;"	e	enum:bms_property
+BMS_PROP_CAPACITY_RAW	power/bq28z610.h	/^	BMS_PROP_CAPACITY_RAW,$/;"	e	enum:bms_property
+BMS_PROP_CHARGE_DONE	power/bq28z610.h	/^	BMS_PROP_CHARGE_DONE,$/;"	e	enum:bms_property
+BMS_PROP_CHIP_OK	power/bq28z610.h	/^	BMS_PROP_CHIP_OK,$/;"	e	enum:bms_property
+BMS_PROP_FASTCHARGE_MODE	power/bq28z610.h	/^	BMS_PROP_FASTCHARGE_MODE,$/;"	e	enum:bms_property
+BMS_PROP_FCC	power/bq28z610.h	/^	BMS_PROP_FCC,$/;"	e	enum:bms_property
+BMS_PROP_I2C_ERROR_COUNT	power/bq28z610.h	/^	BMS_PROP_I2C_ERROR_COUNT,$/;"	e	enum:bms_property
+BMS_PROP_ISC_ALERT_LEVEL	power/bq28z610.h	/^	BMS_PROP_ISC_ALERT_LEVEL,$/;"	e	enum:bms_property
+BMS_PROP_MONITOR_DELAY	power/bq28z610.h	/^	BMS_PROP_MONITOR_DELAY,$/;"	e	enum:bms_property
+BMS_PROP_RESISTANCE	power/bq28z610.h	/^	BMS_PROP_RESISTANCE,$/;"	e	enum:bms_property
+BMS_PROP_RESISTANCE_ID	power/bq28z610.h	/^	BMS_PROP_RESISTANCE_ID,$/;"	e	enum:bms_property
+BMS_PROP_RM	power/bq28z610.h	/^	BMS_PROP_RM,$/;"	e	enum:bms_property
+BMS_PROP_RSOC	power/bq28z610.h	/^	BMS_PROP_RSOC,$/;"	e	enum:bms_property
+BMS_PROP_SHUTDOWN_DELAY	power/bq28z610.h	/^	BMS_PROP_SHUTDOWN_DELAY,$/;"	e	enum:bms_property
+BMS_PROP_SHUTDOWN_MODE	power/bq28z610.h	/^	BMS_PROP_SHUTDOWN_MODE,$/;"	e	enum:bms_property
+BMS_PROP_SOA_ALERT_LEVEL	power/bq28z610.h	/^	BMS_PROP_SOA_ALERT_LEVEL,$/;"	e	enum:bms_property
+BMS_PROP_SOC_DECIMAL	power/bq28z610.h	/^	BMS_PROP_SOC_DECIMAL,$/;"	e	enum:bms_property
+BMS_PROP_SOC_DECIMAL_RATE	power/bq28z610.h	/^	BMS_PROP_SOC_DECIMAL_RATE,$/;"	e	enum:bms_property
+BMS_PROP_SOH	power/bq28z610.h	/^	BMS_PROP_SOH,$/;"	e	enum:bms_property
+BMS_PROP_TEMP_MAX	power/bq28z610.h	/^	BMS_PROP_TEMP_MAX,$/;"	e	enum:bms_property
+BMS_PROP_TIME_OT	power/bq28z610.h	/^	BMS_PROP_TIME_OT,$/;"	e	enum:bms_property
+BMS_SYSFS_FIELD_RO	power/bq28z610.h	256;"	d
+BMS_SYSFS_FIELD_RW	power/bq28z610.h	249;"	d
+BQ_CHARGE_FULL_SOC	power/bq28z610.h	39;"	d
+BQ_DEFUALT_FULL_SOC	power/bq28z610.h	41;"	d
+BQ_FG_BQ27Z561	power/bq28z610.h	/^	BQ_FG_BQ27Z561,$/;"	e	enum:bq_fg_device_name
+BQ_FG_BQ27Z746	power/bq28z610.h	/^	BQ_FG_BQ27Z746,$/;"	e	enum:bq_fg_device_name
+BQ_FG_BQ28Z610	power/bq28z610.h	/^	BQ_FG_BQ28Z610,$/;"	e	enum:bq_fg_device_name
+BQ_FG_BQ30Z55	power/bq28z610.h	/^	BQ_FG_BQ30Z55,$/;"	e	enum:bq_fg_device_name
+BQ_FG_BQ40Z50	power/bq28z610.h	/^	BQ_FG_BQ40Z50,$/;"	e	enum:bq_fg_device_name
+BQ_FG_MAX1789	power/bq28z610.h	/^	BQ_FG_MAX1789,$/;"	e	enum:bq_fg_device_name
+BQ_FG_NFG1000A	power/bq28z610.h	/^	BQ_FG_NFG1000A,$/;"	e	enum:bq_fg_device_name
+BQ_FG_NFG1000B	power/bq28z610.h	/^	BQ_FG_NFG1000B,$/;"	e	enum:bq_fg_device_name
+BQ_FG_RAA241200	power/bq28z610.h	/^	BQ_FG_RAA241200,$/;"	e	enum:bq_fg_device_name
+BQ_FG_REG_AI	power/bq28z610.h	/^	BQ_FG_REG_AI,		\/* Average Current *\/$/;"	e	enum:bq_fg_reg_idx
+BQ_FG_REG_ALT_MAC	power/bq28z610.h	/^	BQ_FG_REG_ALT_MAC,	\/* AltManufactureAccess*\/$/;"	e	enum:bq_fg_reg_idx
+BQ_FG_REG_BATT_STATUS	power/bq28z610.h	/^	BQ_FG_REG_BATT_STATUS,	\/* BatteryStatus *\/$/;"	e	enum:bq_fg_reg_idx
+BQ_FG_REG_CC	power/bq28z610.h	/^	BQ_FG_REG_CC,		\/* Cycle Count *\/$/;"	e	enum:bq_fg_reg_idx
+BQ_FG_REG_CHG_CUR	power/bq28z610.h	/^	BQ_FG_REG_CHG_CUR,	\/* Charging Current*\/$/;"	e	enum:bq_fg_reg_idx
+BQ_FG_REG_CHG_VOL	power/bq28z610.h	/^	BQ_FG_REG_CHG_VOL,	\/* Charging Voltage*\/$/;"	e	enum:bq_fg_reg_idx
+BQ_FG_REG_CN	power/bq28z610.h	/^	BQ_FG_REG_CN,		\/* Current Now *\/$/;"	e	enum:bq_fg_reg_idx
+BQ_FG_REG_CTRL	power/bq28z610.h	/^	BQ_FG_REG_CTRL = 0,$/;"	e	enum:bq_fg_reg_idx
+BQ_FG_REG_DC	power/bq28z610.h	/^	BQ_FG_REG_DC,		\/* Design Capacity *\/$/;"	e	enum:bq_fg_reg_idx
+BQ_FG_REG_FCC	power/bq28z610.h	/^	BQ_FG_REG_FCC,		\/* Full Charge Capacity *\/$/;"	e	enum:bq_fg_reg_idx
+BQ_FG_REG_MAC_CHKSUM	power/bq28z610.h	/^	BQ_FG_REG_MAC_CHKSUM,	\/* MACChecksum *\/$/;"	e	enum:bq_fg_reg_idx
+BQ_FG_REG_MAC_DATA	power/bq28z610.h	/^	BQ_FG_REG_MAC_DATA,	\/* MACData*\/$/;"	e	enum:bq_fg_reg_idx
+BQ_FG_REG_MAC_DATA_LEN	power/bq28z610.h	/^	BQ_FG_REG_MAC_DATA_LEN,	\/* MACDataLen *\/$/;"	e	enum:bq_fg_reg_idx
+BQ_FG_REG_RM	power/bq28z610.h	/^	BQ_FG_REG_RM,		\/* Remaining Capacity *\/$/;"	e	enum:bq_fg_reg_idx
+BQ_FG_REG_SOC	power/bq28z610.h	/^	BQ_FG_REG_SOC,		\/* Relative State of Charge *\/$/;"	e	enum:bq_fg_reg_idx
+BQ_FG_REG_SOH	power/bq28z610.h	/^	BQ_FG_REG_SOH,		\/* State of Health *\/$/;"	e	enum:bq_fg_reg_idx
+BQ_FG_REG_TEMP	power/bq28z610.h	/^	BQ_FG_REG_TEMP,		\/* Battery Temperature *\/$/;"	e	enum:bq_fg_reg_idx
+BQ_FG_REG_TTE	power/bq28z610.h	/^	BQ_FG_REG_TTE,		\/* Time to Empty *\/$/;"	e	enum:bq_fg_reg_idx
+BQ_FG_REG_TTF	power/bq28z610.h	/^	BQ_FG_REG_TTF,		\/* Time to Full *\/$/;"	e	enum:bq_fg_reg_idx
+BQ_FG_REG_VOLT	power/bq28z610.h	/^	BQ_FG_REG_VOLT,		\/* Battery Voltage *\/$/;"	e	enum:bq_fg_reg_idx
+BQ_FG_UNKNOWN	power/bq28z610.h	/^	BQ_FG_UNKNOWN,$/;"	e	enum:bq_fg_device_name
+BQ_RECHARGE_SOC	power/bq28z610.h	40;"	d
+BQ_REPORT_FULL_SOC	power/bq28z610.h	38;"	d
+CHARGER_PLUG_VOTER	notifier/voter.h	12;"	d
+CHARGER_TYPE_VOTER	notifier/voter.h	13;"	d
+DEBUG_FORCE_CLIENT	notifier/voter.c	17;"	d	file:
+FFC_SMOOTH_LEN	power/bq28z610.c	825;"	d	file:
+FFC_VOTER	notifier/voter.h	19;"	d
+FG_DEVICE_CHEM_LEN_MAX	power/bq28z610.h	32;"	d
+FG_I2C_VOTER	notifier/voter.h	23;"	d
+FG_MAC_CMD_CHARGING_STATUS	power/bq28z610.h	/^	FG_MAC_CMD_CHARGING_STATUS = 0x0055,$/;"	e	enum:bq_fg_mac_cmd
+FG_MAC_CMD_CHEM_ID	power/bq28z610.h	/^	FG_MAC_CMD_CHEM_ID	= 0x0006,$/;"	e	enum:bq_fg_mac_cmd
+FG_MAC_CMD_CTRL_STATUS	power/bq28z610.h	/^	FG_MAC_CMD_CTRL_STATUS	= 0x0000,$/;"	e	enum:bq_fg_mac_cmd
+FG_MAC_CMD_DASTATUS1	power/bq28z610.h	/^	FG_MAC_CMD_DASTATUS1	= 0x0071,$/;"	e	enum:bq_fg_mac_cmd
+FG_MAC_CMD_DEVICE_CHEM	power/bq28z610.h	/^	FG_MAC_CMD_DEVICE_CHEM	= 0x004B,$/;"	e	enum:bq_fg_mac_cmd
+FG_MAC_CMD_DEVICE_NAME	power/bq28z610.h	/^	FG_MAC_CMD_DEVICE_NAME	= 0x004A,$/;"	e	enum:bq_fg_mac_cmd
+FG_MAC_CMD_DEV_RESET	power/bq28z610.h	/^	FG_MAC_CMD_DEV_RESET	= 0x0041,$/;"	e	enum:bq_fg_mac_cmd
+FG_MAC_CMD_DEV_TYPE	power/bq28z610.h	/^	FG_MAC_CMD_DEV_TYPE	= 0x0001,$/;"	e	enum:bq_fg_mac_cmd
+FG_MAC_CMD_FASTCHARGE_DIS	power/bq28z610.h	/^	FG_MAC_CMD_FASTCHARGE_DIS = 0x003F,$/;"	e	enum:bq_fg_mac_cmd
+FG_MAC_CMD_FASTCHARGE_EN	power/bq28z610.h	/^	FG_MAC_CMD_FASTCHARGE_EN = 0x003E,$/;"	e	enum:bq_fg_mac_cmd
+FG_MAC_CMD_FCC_SOH	power/bq28z610.h	/^	FG_MAC_CMD_FCC_SOH	= 0x0077,$/;"	e	enum:bq_fg_mac_cmd
+FG_MAC_CMD_FW_VER	power/bq28z610.h	/^	FG_MAC_CMD_FW_VER	= 0x0002,$/;"	e	enum:bq_fg_mac_cmd
+FG_MAC_CMD_GAUGING	power/bq28z610.h	/^	FG_MAC_CMD_GAUGING	= 0x0021,$/;"	e	enum:bq_fg_mac_cmd
+FG_MAC_CMD_HW_VER	power/bq28z610.h	/^	FG_MAC_CMD_HW_VER	= 0x0003,$/;"	e	enum:bq_fg_mac_cmd
+FG_MAC_CMD_IF_SIG	power/bq28z610.h	/^	FG_MAC_CMD_IF_SIG	= 0x0004,$/;"	e	enum:bq_fg_mac_cmd
+FG_MAC_CMD_ITSTATUS1	power/bq28z610.h	/^	FG_MAC_CMD_ITSTATUS1	= 0x0073,$/;"	e	enum:bq_fg_mac_cmd
+FG_MAC_CMD_LIFETIME1	power/bq28z610.h	/^	FG_MAC_CMD_LIFETIME1	= 0x0060,$/;"	e	enum:bq_fg_mac_cmd
+FG_MAC_CMD_LIFETIME3	power/bq28z610.h	/^	FG_MAC_CMD_LIFETIME3	= 0x0062,$/;"	e	enum:bq_fg_mac_cmd
+FG_MAC_CMD_MANU_NAME	power/bq28z610.h	/^	FG_MAC_CMD_MANU_NAME	= 0x004C,$/;"	e	enum:bq_fg_mac_cmd
+FG_MAC_CMD_QMAX	power/bq28z610.h	/^	FG_MAC_CMD_QMAX		= 0x0075,$/;"	e	enum:bq_fg_mac_cmd
+FG_MAC_CMD_RA_TABLE	power/bq28z610.h	/^	FG_MAC_CMD_RA_TABLE	= 0x40C0,$/;"	e	enum:bq_fg_mac_cmd
+FG_MAC_CMD_SEAL	power/bq28z610.h	/^	FG_MAC_CMD_SEAL		= 0x0030,$/;"	e	enum:bq_fg_mac_cmd
+FG_MAC_CMD_SHUTDOWN	power/bq28z610.h	/^	FG_MAC_CMD_SHUTDOWN	= 0x0010,$/;"	e	enum:bq_fg_mac_cmd
+FG_MONITOR_DELAY_30S	power/bq28z610.h	36;"	d
+FG_MONITOR_DELAY_3S	power/bq28z610.h	34;"	d
+FG_MONITOR_DELAY_5S	power/bq28z610.h	35;"	d
+FG_OPTIMIZ_FULL_TIME	power/bq28z610.c	828;"	d	file:
+FG_RAW_SOC_FULL	power/bq28z610.c	826;"	d	file:
+FG_REPORT_FULL_SOC	power/bq28z610.c	827;"	d	file:
+FV_DEC_VOTER	notifier/voter.h	24;"	d
+HW_LIMIT_VOTER	notifier/voter.h	14;"	d
+HW_REPORT_FULL_SOC	power/bq28z610.h	43;"	d
+JEITA_CHARGE_VOTER	notifier/voter.h	16;"	d
+LOG	notifier/main.c	17;"	d	file:
+LOG_D	datastruct/datastructure.c	3;"	d	file:
+LOW_TEMP_CHARGING_DELTA	power/bq28z610.c	823;"	d	file:
+LOW_TEMP_DISCHARGING_DELTA	power/bq28z610.c	824;"	d	file:
+MIN_VOTER1	notifier/main.c	18;"	d	file:
+MIN_VOTER2	notifier/main.c	19;"	d	file:
+NORMAL_DISTEMP_CHARGING_DELTA	power/bq28z610.c	822;"	d	file:
+NORMAL_TEMP_CHARGING_DELTA	power/bq28z610.c	821;"	d	file:
+NUM_MAX_CLIENTS	notifier/voter.c	16;"	d	file:
+NUM_REGS	power/bq28z610.h	/^	NUM_REGS,$/;"	e	enum:bq_fg_reg_idx
+NUM_VOTABLE_TYPES	notifier/voter.h	/^	NUM_VOTABLE_TYPES,$/;"	e	enum:votable_type
+NVT_FG_AVE_CUR	power/bq28z610.h	/^	NVT_FG_AVE_CUR,	\/*10s average current*\/$/;"	e	enum:bq_fg_reg_idx
+NVT_FG_AVE_TEMP	power/bq28z610.h	/^	NVT_FG_AVE_TEMP,	\/*10s average tempature*\/$/;"	e	enum:bq_fg_reg_idx
+NVT_FG_REG_ACT_POWER	power/bq28z610.h	/^	NVT_FG_REG_ACT_POWER,	\/*Actual power output*\/$/;"	e	enum:bq_fg_reg_idx
+NVT_FG_REG_ACT_POWER_B	power/bq28z610.h	/^	NVT_FG_REG_ACT_POWER_B,	\/*Actual power output B*\/$/;"	e	enum:bq_fg_reg_idx
+NVT_FG_REG_CONST_POWER	power/bq28z610.h	/^	NVT_FG_REG_CONST_POWER,	\/*Constant power value*\/$/;"	e	enum:bq_fg_reg_idx
+NVT_FG_REG_CONST_POWER_TM	power/bq28z610.h	/^	NVT_FG_REG_CONST_POWER_TM,	\/*Constant power value time*\/$/;"	e	enum:bq_fg_reg_idx
+NVT_FG_REG_CUR_DEV	power/bq28z610.h	/^	NVT_FG_REG_CUR_DEV,	\/*current deviation*\/$/;"	e	enum:bq_fg_reg_idx
+NVT_FG_REG_EST_POWER	power/bq28z610.h	/^	NVT_FG_REG_EST_POWER,	\/*Estimated power input*\/$/;"	e	enum:bq_fg_reg_idx
+NVT_FG_REG_EST_POWER_B	power/bq28z610.h	/^	NVT_FG_REG_EST_POWER_B,	\/*Estimated power input B*\/$/;"	e	enum:bq_fg_reg_idx
+NVT_FG_REG_ISC	power/bq28z610.h	/^	NVT_FG_REG_ISC,	\/* isc alert *\/$/;"	e	enum:bq_fg_reg_idx
+NVT_FG_REG_NVT_REF_CURRENT	power/bq28z610.h	/^	NVT_FG_REG_NVT_REF_CURRENT,	\/*nvt recommended discharge power*\/$/;"	e	enum:bq_fg_reg_idx
+NVT_FG_REG_OVER_PEAK	power/bq28z610.h	/^	NVT_FG_REG_OVER_PEAK,	\/*over peak flag*\/$/;"	e	enum:bq_fg_reg_idx
+NVT_FG_REG_POWER_DEV	power/bq28z610.h	/^	NVT_FG_REG_POWER_DEV,	\/*Estimated power-Actual power output*\/$/;"	e	enum:bq_fg_reg_idx
+NVT_FG_REG_POWER_DEV_B	power/bq28z610.h	/^	NVT_FG_REG_POWER_DEV_B,	\/*Estimated power-Actual power output B*\/$/;"	e	enum:bq_fg_reg_idx
+NVT_FG_REG_POW_DEV	power/bq28z610.h	/^	NVT_FG_REG_POW_DEV,	\/*power deviation*\/$/;"	e	enum:bq_fg_reg_idx
+NVT_FG_REG_REF_CURRENT	power/bq28z610.h	/^	NVT_FG_REG_REF_CURRENT,	\/*nvt recommended discharge current*\/$/;"	e	enum:bq_fg_reg_idx
+NVT_FG_REG_REF_POWER	power/bq28z610.h	/^	NVT_FG_REG_REF_POWER,	\/*Recommended reference power*\/$/;"	e	enum:bq_fg_reg_idx
+NVT_FG_REG_SOA_H	power/bq28z610.h	/^	NVT_FG_REG_SOA_H,	\/* soa alert *\/$/;"	e	enum:bq_fg_reg_idx
+NVT_FG_REG_SOA_L	power/bq28z610.h	/^	NVT_FG_REG_SOA_L,	\/* soa alert *\/$/;"	e	enum:bq_fg_reg_idx
+NVT_FG_REG_START_LEARNING	power/bq28z610.h	/^	NVT_FG_REG_START_LEARNING,	\/*start learning*\/$/;"	e	enum:bq_fg_reg_idx
+NVT_FG_REG_START_LEARNING_B	power/bq28z610.h	/^	NVT_FG_REG_START_LEARNING_B,	\/*start learning B*\/$/;"	e	enum:bq_fg_reg_idx
+NVT_FG_REG_STOP_LEARNING	power/bq28z610.h	/^	NVT_FG_REG_STOP_LEARNING,	\/*stop learning*\/$/;"	e	enum:bq_fg_reg_idx
+NVT_FG_REG_STOP_LEARNING_B	power/bq28z610.h	/^	NVT_FG_REG_STOP_LEARNING_B,	\/*stop learning B*\/$/;"	e	enum:bq_fg_reg_idx
+NVT_FG_REG_TIME_DEV	power/bq28z610.h	/^	NVT_FG_REG_TIME_DEV,	\/*Estimated power time-Actual power time output*\/$/;"	e	enum:bq_fg_reg_idx
+PDM_VOTER	notifier/voter.h	15;"	d
+RANDOM_CHALLENGE_LEN_BQ27Z561	power/bq28z610.h	30;"	d
+RANDOM_CHALLENGE_LEN_BQ28Z610	power/bq28z610.h	31;"	d
+RANDOM_CHALLENGE_LEN_MAX	power/bq28z610.h	29;"	d
+SHUTDOWN_DELAY_VOL	power/bq28z610.c	1566;"	d	file:
+SHUTDOWN_VOL	power/bq28z610.c	1567;"	d	file:
+SIC_VOTER	notifier/voter.h	21;"	d
+SLAVE_CON_ERR_VOTER	notifier/voter.h	22;"	d
+STEP_CHARGE_VOTER	notifier/voter.h	18;"	d
+THERMAL_VOTER	notifier/voter.h	17;"	d
+TO_STR	datastruct/datastructure.c	2;"	d	file:
+TYPEC_BURN_VOTER	notifier/voter.h	20;"	d
+VOTE_MAX	notifier/voter.h	/^	VOTE_MAX,$/;"	e	enum:votable_type
+VOTE_MIN	notifier/voter.h	/^	VOTE_MIN,$/;"	e	enum:votable_type
+VOTE_SET_ANY	notifier/voter.h	/^	VOTE_SET_ANY,$/;"	e	enum:votable_type
+__BQ28Z16_H	power/bq28z610.h	17;"	d
+__PMIC_VOTER_H	notifier/voter.h	8;"	d
+__fg_read_block	power/bq28z610.c	/^static int __fg_read_block(struct i2c_client *client, u8 reg, u8 *buf, u8 len)$/;"	f	file:
+__fg_read_byte	power/bq28z610.c	/^static int __fg_read_byte(struct i2c_client *client, u8 reg, u8 *val)$/;"	f	file:
+__fg_read_word	power/bq28z610.c	/^static int __fg_read_word(struct i2c_client *client, u8 reg, u16 *val)$/;"	f	file:
+__fg_write_block	power/bq28z610.c	/^static int __fg_write_block(struct i2c_client *client, u8 reg, u8 *buf, u8 len)$/;"	f	file:
+__fg_write_byte	power/bq28z610.c	/^static int __fg_write_byte(struct i2c_client *client, u8 reg, u8 val)$/;"	f	file:
+adapting_power	power/bq28z610.h	/^	int adapting_power;$/;"	m	struct:bq_fg_chip
+attr	power/bq28z610.h	/^	struct device_attribute attr;$/;"	m	struct:mtk_bms_sysfs_field_info	typeref:struct:mtk_bms_sysfs_field_info::device_attribute
+authentic_get	power/bq28z610.c	/^static int authentic_get(struct bq_fg_chip *gm,$/;"	f	file:
+authentic_set	power/bq28z610.c	/^static int authentic_set(struct bq_fg_chip *gm,$/;"	f	file:
+authenticate	power/bq28z610.h	/^	bool authenticate;$/;"	m	struct:bq_fg_chip
+batt_fc	power/bq28z610.h	/^	bool batt_fc;$/;"	m	struct:bq_fg_chip
+batt_psy	power/bq28z610.h	/^	struct power_supply *batt_psy;$/;"	m	struct:bq_fg_chip	typeref:struct:bq_fg_chip::power_supply
+battery_get_psy	power/bq28z610.c	/^static bool battery_get_psy(struct bq_fg_chip *bq)$/;"	f	file:
+bms_get_property	power/bq28z610.c	/^EXPORT_SYMBOL(bms_get_property);$/;"	v
+bms_get_property	power/bq28z610.c	/^int bms_get_property(enum bms_property bp,$/;"	f
+bms_property	power/bq28z610.h	/^enum bms_property {$/;"	g
+bms_set_property	power/bq28z610.c	/^EXPORT_SYMBOL(bms_set_property);$/;"	v
+bms_set_property	power/bq28z610.c	/^int bms_set_property(enum bms_property bp,$/;"	f
+bms_sysfs_attr_group	power/bq28z610.c	/^static const struct attribute_group bms_sysfs_attr_group = {$/;"	v	typeref:struct:attribute_group	file:
+bms_sysfs_attrs	power/bq28z610.c	/^	bms_sysfs_attrs[ARRAY_SIZE(bms_sysfs_field_tbl) + 1];$/;"	v	typeref:struct:attribute	file:
+bms_sysfs_create_group	power/bq28z610.c	/^static int bms_sysfs_create_group(struct power_supply *psy)$/;"	f	file:
+bms_sysfs_field_tbl	power/bq28z610.c	/^static struct mtk_bms_sysfs_field_info bms_sysfs_field_tbl[] = {$/;"	v	typeref:struct:mtk_bms_sysfs_field_info	file:
+bms_sysfs_init_attrs	power/bq28z610.c	/^static void bms_sysfs_init_attrs(void)$/;"	f	file:
+bms_sysfs_show	power/bq28z610.c	/^static ssize_t bms_sysfs_show(struct device *dev,$/;"	f	file:
+bms_sysfs_store	power/bq28z610.c	/^static ssize_t bms_sysfs_store(struct device *dev,$/;"	f	file:
+bms_wakelock	power/bq28z610.h	/^	struct wakeup_source *bms_wakelock;$/;"	m	struct:bq_fg_chip	typeref:struct:bq_fg_chip::wakeup_source
+bq_battery_soc_smooth_tracking_new	power/bq28z610.c	/^static int bq_battery_soc_smooth_tracking_new(struct bq_fg_chip *bq, int raw_soc, int batt_soc)$/;"	f	file:
+bq_charging_status	power/bq28z610.h	/^	int bq_charging_status;$/;"	m	struct:bq_fg_chip
+bq_fg_chip	power/bq28z610.h	/^struct bq_fg_chip {$/;"	s
+bq_fg_device_name	power/bq28z610.h	/^enum bq_fg_device_name {$/;"	g
+bq_fg_mac_cmd	power/bq28z610.h	/^enum bq_fg_mac_cmd {$/;"	g
+bq_fg_reg_idx	power/bq28z610.h	/^enum bq_fg_reg_idx {$/;"	g
+bq_fg_regs	power/bq28z610.h	/^static u8 bq_fg_regs[NUM_REGS] = {$/;"	v
+calc_delta_time	power/bq28z610.c	/^static int calc_delta_time(ktime_t time_last, int *delta_time)$/;"	f	file:
+callback	notifier/voter.c	/^	int			(*callback)(struct votable *votable,$/;"	m	struct:votable	file:
+capacity_raw_get	power/bq28z610.c	/^static int capacity_raw_get(struct bq_fg_chip *gm,$/;"	f	file:
+cell_voltage	power/bq28z610.h	/^	u16 cell_voltage[3];$/;"	m	struct:bq_fg_chip
+charge_current	power/bq28z610.h	/^	int charge_current;$/;"	m	struct:bq_fg_chip
+charge_done_get	power/bq28z610.c	/^static int charge_done_get(struct bq_fg_chip *gm,$/;"	f	file:
+charge_voltage	power/bq28z610.h	/^	int charge_voltage;$/;"	m	struct:bq_fg_chip
+chip_ok	power/bq28z610.h	/^	bool chip_ok;$/;"	m	struct:bq_fg_chip
+chip_ok_get	power/bq28z610.c	/^static int chip_ok_get(struct bq_fg_chip *gm,$/;"	f	file:
+client	power/bq28z610.h	/^	struct i2c_client *client;$/;"	m	struct:bq_fg_chip	typeref:struct:bq_fg_chip::i2c_client
+client_strs	notifier/voter.c	/^	char			*client_strs[NUM_MAX_CLIENTS];$/;"	m	struct:votable	file:
+client_vote	notifier/voter.c	/^struct client_vote {$/;"	s	file:
+create_votable	notifier/voter.c	/^EXPORT_SYMBOL_GPL(create_votable);$/;"	v
+create_votable	notifier/voter.c	/^struct votable *create_votable(const char *name,$/;"	f
+critical_shutdown_vbat	power/bq28z610.h	/^	int	critical_shutdown_vbat;$/;"	m	struct:bq_fg_chip
+curr_lim	power/bq28z610.c	/^	int curr_lim;$/;"	m	struct:ffc_smooth	file:
+cycle_count	power/bq28z610.h	/^	int cycle_count;$/;"	m	struct:bq_fg_chip
+data	datastruct/datastructure.c	/^struct demo_struct data = {$/;"	v	typeref:struct:demo_struct
+data	notifier/voter.c	/^	void			*data;$/;"	m	struct:votable	file:
+data_lock	power/bq28z610.h	/^	struct mutex data_lock;$/;"	m	struct:bq_fg_chip	typeref:struct:bq_fg_chip::mutex
+dc	power/bq28z610.h	/^	int dc;$/;"	m	struct:bq_fg_chip
+dddd-objs	notifier/Makefile	/^dddd-objs := main.o voter.o$/;"	m
+debug_level	notifier/main.c	/^	int debug_level;$/;"	m	struct:demo_chip	file:
+debug_root	notifier/voter.c	/^static struct dentry *debug_root;$/;"	v	typeref:struct:dentry	file:
+dec_rate_len	power/bq28z610.h	/^	int	dec_rate_len;$/;"	m	struct:bq_fg_chip
+dec_rate_seq	power/bq28z610.h	/^	int	*dec_rate_seq;$/;"	m	struct:bq_fg_chip
+demo_chip	notifier/main.c	/^struct demo_chip {$/;"	s	file:
+demo_delayed_work	notifier/main.c	/^static void demo_delayed_work(struct work_struct *work)$/;"	f	file:
+demo_event_work	notifier/main.c	/^static void demo_event_work(struct work_struct *work)$/;"	f	file:
+demo_exit	notifier/main.c	/^module_exit(demo_exit);$/;"	v
+demo_exit	notifier/main.c	/^static void __exit demo_exit(void) {$/;"	f	file:
+demo_init	notifier/main.c	/^module_init(demo_init);$/;"	v
+demo_init	notifier/main.c	/^static int __init demo_init(void) {$/;"	f	file:
+demo_nb	notifier/main.c	/^	struct notifier_block demo_nb;$/;"	m	struct:demo_chip	typeref:struct:demo_chip::notifier_block	file:
+demo_notifier_broadcast	notifier/main.c	/^void demo_notifier_broadcast(unsigned long event, void *data)$/;"	f
+demo_notifier_cb	notifier/main.c	/^static int demo_notifier_cb(struct notifier_block *nb,$/;"	f	file:
+demo_reg_notifier	notifier/main.c	/^int demo_reg_notifier(struct notifier_block *nb)$/;"	f
+demo_unreg_notifier	notifier/main.c	/^void demo_unreg_notifier(struct notifier_block *nb)$/;"	f
+demo_votable_any	notifier/main.c	/^static int demo_votable_any(struct votable *votable, void *data, int value, const char *client)$/;"	f	file:
+demo_votable_max	notifier/main.c	/^static int demo_votable_max(struct votable *votable, void *data, int value, const char *client)$/;"	f	file:
+demo_votable_min	notifier/main.c	/^static int demo_votable_min(struct votable *votable, void *data, int value, const char *client)$/;"	f	file:
+demo_work	notifier/main.c	/^static void demo_work(struct work_struct *work)$/;"	f	file:
+destroy_votable	notifier/voter.c	/^EXPORT_SYMBOL_GPL(destroy_votable);$/;"	v
+destroy_votable	notifier/voter.c	/^void destroy_votable(struct votable *votable)$/;"	f
+dev	notifier/main.c	/^	struct device *dev;$/;"	m	struct:demo_chip	typeref:struct:demo_chip::device	file:
+dev	power/bq28z610.h	/^	struct device *dev;$/;"	m	struct:bq_fg_chip	typeref:struct:bq_fg_chip::device
+device_chem	power/bq28z610.h	/^	char device_chem[FG_DEVICE_CHEM_LEN_MAX];$/;"	m	struct:bq_fg_chip
+device_name	power/bq28z610.h	/^	int device_name;$/;"	m	struct:bq_fg_chip
+digest	power/bq28z610.h	/^	u8 digest[RANDOM_CHALLENGE_LEN_MAX];$/;"	m	struct:bq_fg_chip
+dwork	notifier/main.c	/^	struct delayed_work dwork;$/;"	m	struct:demo_chip	typeref:struct:demo_chip::delayed_work	file:
+effective_client_id	notifier/voter.c	/^	int			effective_client_id;$/;"	m	struct:votable	file:
+effective_client_open	notifier/voter.c	/^static int effective_client_open(struct inode *inode, struct file *file)$/;"	f	file:
+effective_client_ops	notifier/voter.c	/^static const struct file_operations effective_client_ops = {$/;"	v	typeref:struct:file_operations	file:
+effective_result	notifier/voter.c	/^	int			effective_result;$/;"	m	struct:votable	file:
+enable_shutdown_delay	power/bq28z610.h	/^	bool	enable_shutdown_delay;$/;"	m	struct:bq_fg_chip
+enabled	notifier/voter.c	/^	bool	enabled;$/;"	m	struct:client_vote	file:
+event_work	notifier/main.c	/^	struct delayed_work event_work;$/;"	m	struct:demo_chip	typeref:struct:demo_chip::delayed_work	file:
+event_wq	notifier/main.c	/^	struct workqueue_struct *event_wq;$/;"	m	struct:demo_chip	typeref:struct:demo_chip::workqueue_struct	file:
+fake_cycle_count	power/bq28z610.h	/^	int fake_cycle_count;$/;"	m	struct:bq_fg_chip
+fake_i2c_error_count	power/bq28z610.h	/^	int fake_i2c_error_count;$/;"	m	struct:bq_fg_chip
+fake_shutdown_delay_enable	power/bq28z610.h	/^	bool	fake_shutdown_delay_enable;$/;"	m	struct:bq_fg_chip
+fake_soc	power/bq28z610.h	/^	int fake_soc;$/;"	m	struct:bq_fg_chip
+fake_tbat	power/bq28z610.h	/^	int fake_tbat;$/;"	m	struct:bq_fg_chip
+fast_chg	power/bq28z610.h	/^	bool fast_chg;$/;"	m	struct:bq_fg_chip
+fastcharge_mode_get	power/bq28z610.c	/^static int fastcharge_mode_get(struct bq_fg_chip *gm,$/;"	f	file:
+fastcharge_mode_set	power/bq28z610.c	/^static int fastcharge_mode_set(struct bq_fg_chip *gm,$/;"	f	file:
+fcc	power/bq28z610.h	/^	int fcc;$/;"	m	struct:bq_fg_chip
+fcc_get	power/bq28z610.c	/^static int fcc_get(struct bq_fg_chip *gm,$/;"	f	file:
+ffc_dischg_smooth	power/bq28z610.c	/^struct ffc_smooth ffc_dischg_smooth[FFC_SMOOTH_LEN] = {$/;"	v	typeref:struct:ffc_smooth
+ffc_smooth	power/bq28z610.c	/^struct ffc_smooth {$/;"	s	file:
+ffc_smooth	power/bq28z610.h	/^	bool	ffc_smooth;$/;"	m	struct:bq_fg_chip
+fg_attr_group	power/bq28z610.c	/^static const struct attribute_group fg_attr_group = {$/;"	v	typeref:struct:attribute_group	file:
+fg_attributes	power/bq28z610.c	/^static struct attribute *fg_attributes[] = {$/;"	v	typeref:struct:attribute	file:
+fg_check_device	power/bq28z610.c	/^static int fg_check_device(struct bq_fg_chip *bq)$/;"	f	file:
+fg_checksum	power/bq28z610.c	/^static u8 fg_checksum(u8 *data, u8 len)$/;"	f	file:
+fg_dbg	power/bq28z610.c	50;"	d	file:
+fg_driver	power/bq28z610.c	/^module_i2c_driver(fg_driver);$/;"	v
+fg_driver	power/bq28z610.c	/^static struct i2c_driver fg_driver = {$/;"	v	typeref:struct:i2c_driver	file:
+fg_err	power/bq28z610.c	38;"	d	file:
+fg_get_property	power/bq28z610.c	/^static int fg_get_property(struct power_supply *psy, enum power_supply_property psp, union power_supply_propval *val)$/;"	f	file:
+fg_get_raw_soc	power/bq28z610.c	/^static int fg_get_raw_soc(struct bq_fg_chip *bq)$/;"	f	file:
+fg_get_soc_decimal	power/bq28z610.c	/^static int fg_get_soc_decimal(struct bq_fg_chip *bq)$/;"	f	file:
+fg_get_soc_decimal_rate	power/bq28z610.c	/^static int fg_get_soc_decimal_rate(struct bq_fg_chip *bq)$/;"	f	file:
+fg_id	power/bq28z610.c	/^static const struct i2c_device_id fg_id[] = {$/;"	v	typeref:struct:i2c_device_id	file:
+fg_info	power/bq28z610.c	44;"	d	file:
+fg_init_psy	power/bq28z610.c	/^static int fg_init_psy(struct bq_fg_chip *bq)$/;"	f	file:
+fg_mac_read_block	power/bq28z610.c	/^static int fg_mac_read_block(struct bq_fg_chip *bq, u16 cmd, u8 *buf, u8 len)$/;"	f	file:
+fg_mac_write_block	power/bq28z610.c	/^static int fg_mac_write_block(struct bq_fg_chip *bq, u16 cmd, u8 *data, u8 len)$/;"	f	file:
+fg_match_table	power/bq28z610.c	/^static struct of_device_id fg_match_table[] = {$/;"	v	typeref:struct:of_device_id	file:
+fg_monitor_workfunc	power/bq28z610.c	/^static void fg_monitor_workfunc(struct work_struct *work)$/;"	f	file:
+fg_mos_control	power/bq28z610.h	/^	struct regulator *fg_mos_control;$/;"	m	struct:bq_fg_chip	typeref:struct:bq_fg_chip::regulator
+fg_parse_dt	power/bq28z610.c	/^static int fg_parse_dt(struct bq_fg_chip *bq)$/;"	f	file:
+fg_pm_ops	power/bq28z610.c	/^static const struct dev_pm_ops fg_pm_ops = {$/;"	v	typeref:struct:dev_pm_ops	file:
+fg_probe	power/bq28z610.c	/^static int fg_probe(struct i2c_client *client, const struct i2c_device_id *id)$/;"	f	file:
+fg_prop_is_writeable	power/bq28z610.c	/^static int fg_prop_is_writeable(struct power_supply *psy, enum power_supply_property prop)$/;"	f	file:
+fg_props	power/bq28z610.c	/^static enum power_supply_property fg_props[] = {$/;"	v	typeref:enum:power_supply_property	file:
+fg_psy	power/bq28z610.h	/^	struct power_supply *fg_psy;$/;"	m	struct:bq_fg_chip	typeref:struct:bq_fg_chip::power_supply
+fg_psy_d	power/bq28z610.h	/^	struct power_supply_desc fg_psy_d;$/;"	m	struct:bq_fg_chip	typeref:struct:bq_fg_chip::power_supply_desc
+fg_read_avg_current	power/bq28z610.c	/^static int fg_read_avg_current(struct bq_fg_chip *bq)$/;"	f	file:
+fg_read_block	power/bq28z610.c	/^static int fg_read_block(struct bq_fg_chip *bq, u8 reg, u8 *buf, u8 len)$/;"	f	file:
+fg_read_byte	power/bq28z610.c	/^static int fg_read_byte(struct bq_fg_chip *bq, u8 reg, u8 *val)$/;"	f	file:
+fg_read_cell_voltage	power/bq28z610.c	/^static void fg_read_cell_voltage(struct bq_fg_chip *bq)$/;"	f	file:
+fg_read_current	power/bq28z610.c	/^static int fg_read_current(struct bq_fg_chip *bq)$/;"	f	file:
+fg_read_cyclecount	power/bq28z610.c	/^static int fg_read_cyclecount(struct bq_fg_chip *bq)$/;"	f	file:
+fg_read_dc	power/bq28z610.c	/^static int fg_read_dc(struct bq_fg_chip *bq)$/;"	f	file:
+fg_read_fcc	power/bq28z610.c	/^static int fg_read_fcc(struct bq_fg_chip *bq)$/;"	f	file:
+fg_read_qmax	power/bq28z610.c	/^static void fg_read_qmax(struct bq_fg_chip *bq)$/;"	f	file:
+fg_read_rm	power/bq28z610.c	/^static int fg_read_rm(struct bq_fg_chip *bq)$/;"	f	file:
+fg_read_rsoc	power/bq28z610.c	/^static int fg_read_rsoc(struct bq_fg_chip *bq)$/;"	f	file:
+fg_read_soh	power/bq28z610.c	/^static int fg_read_soh(struct bq_fg_chip *bq)$/;"	f	file:
+fg_read_status	power/bq28z610.c	/^static int fg_read_status(struct bq_fg_chip *bq)$/;"	f	file:
+fg_read_temperature	power/bq28z610.c	/^static int fg_read_temperature(struct bq_fg_chip *bq)$/;"	f	file:
+fg_read_volt	power/bq28z610.c	/^static void fg_read_volt(struct bq_fg_chip *bq)$/;"	f	file:
+fg_read_word	power/bq28z610.c	/^static int fg_read_word(struct bq_fg_chip *bq, u8 reg, u16 *val)$/;"	f	file:
+fg_remove	power/bq28z610.c	/^static int fg_remove(struct i2c_client *client)$/;"	f	file:
+fg_resume	power/bq28z610.c	/^static int fg_resume(struct device *dev)$/;"	f	file:
+fg_set_fastcharge_mode	power/bq28z610.c	/^static int fg_set_fastcharge_mode(struct bq_fg_chip *bq, bool enable)$/;"	f	file:
+fg_set_property	power/bq28z610.c	/^static int fg_set_property(struct power_supply *psy, enum power_supply_property prop, const union power_supply_propval *val)$/;"	f	file:
+fg_set_shutdown_mode	power/bq28z610.c	/^static int fg_set_shutdown_mode(struct bq_fg_chip *bq)$/;"	f	file:
+fg_sha256_auth	power/bq28z610.c	/^static int fg_sha256_auth(struct bq_fg_chip *bq, u8 *challenge, int length)$/;"	f	file:
+fg_show_cell0_voltage	power/bq28z610.c	/^static ssize_t fg_show_cell0_voltage(struct device *dev, struct device_attribute *attr, char *buf)$/;"	f	file:
+fg_show_cell1_voltage	power/bq28z610.c	/^static ssize_t fg_show_cell1_voltage(struct device *dev, struct device_attribute *attr, char *buf)$/;"	f	file:
+fg_show_fcc	power/bq28z610.c	/^static ssize_t fg_show_fcc(struct device *dev, struct device_attribute *attr, char *buf)$/;"	f	file:
+fg_show_log_level	power/bq28z610.c	/^static ssize_t fg_show_log_level(struct device *dev, struct device_attribute *attr, char *buf)$/;"	f	file:
+fg_show_qmax0	power/bq28z610.c	/^static ssize_t fg_show_qmax0(struct device *dev, struct device_attribute *attr, char *buf)$/;"	f	file:
+fg_show_qmax1	power/bq28z610.c	/^static ssize_t fg_show_qmax1(struct device *dev, struct device_attribute *attr, char *buf)$/;"	f	file:
+fg_show_rm	power/bq28z610.c	/^static ssize_t fg_show_rm(struct device *dev, struct device_attribute *attr, char *buf)$/;"	f	file:
+fg_show_rsoc	power/bq28z610.c	/^static ssize_t fg_show_rsoc(struct device *dev, struct device_attribute *attr, char *buf)$/;"	f	file:
+fg_shutdown	power/bq28z610.c	/^static void fg_shutdown(struct i2c_client *client)$/;"	f	file:
+fg_store_log_level	power/bq28z610.c	/^static ssize_t fg_store_log_level(struct device *dev, struct device_attribute *attr, const char *buf, size_t count)$/;"	f	file:
+fg_stringtohex	power/bq28z610.c	/^int fg_stringtohex(char *str, unsigned char *out, unsigned int *outlen)$/;"	f
+fg_suspend	power/bq28z610.c	/^static int fg_suspend(struct device *dev)$/;"	f	file:
+fg_update_status	power/bq28z610.c	/^static void fg_update_status(struct bq_fg_chip *bq)$/;"	f	file:
+fg_verify_digest_show	power/bq28z610.c	/^static ssize_t fg_verify_digest_show(struct device *dev, struct device_attribute *attr, char *buf)$/;"	f	file:
+fg_verify_digest_store	power/bq28z610.c	/^ssize_t fg_verify_digest_store(struct device *dev, struct device_attribute *attr, const char *buf, size_t count)$/;"	f
+fg_write_block	power/bq28z610.c	/^static int fg_write_block(struct bq_fg_chip *bq, u8 reg, u8 *data, u8 len)$/;"	f	file:
+fg_write_byte	power/bq28z610.c	/^static int fg_write_byte(struct bq_fg_chip *bq, u8 reg, u8 val)$/;"	f	file:
+find_votable	notifier/voter.c	/^EXPORT_SYMBOL(find_votable);$/;"	v
+find_votable	notifier/voter.c	/^struct votable *find_votable(const char *name)$/;"	f
+force_active	notifier/voter.c	/^	bool			force_active;$/;"	m	struct:votable	file:
+force_active_get	notifier/voter.c	/^static int force_active_get(void *data, u64 *val)$/;"	f	file:
+force_active_set	notifier/voter.c	/^static int force_active_set(void *data, u64 val)$/;"	f	file:
+force_val	notifier/voter.c	/^	u32			force_val;$/;"	m	struct:votable	file:
+g_pdev	notifier/main.c	/^static struct platform_device g_pdev;$/;"	v	typeref:struct:platform_device	file:
+get	power/bq28z610.h	/^	int (*get)(struct bq_fg_chip *gm,$/;"	m	struct:mtk_bms_sysfs_field_info
+get_client_id	notifier/voter.c	/^static int get_client_id(struct votable *votable, const char *client_str)$/;"	f	file:
+get_client_str	notifier/voter.c	/^static char *get_client_str(struct votable *votable, int client_id)$/;"	f	file:
+get_client_vote	notifier/voter.c	/^EXPORT_SYMBOL(get_client_vote);$/;"	v
+get_client_vote	notifier/voter.c	/^int get_client_vote(struct votable *votable, const char *client_str)$/;"	f
+get_client_vote_locked	notifier/voter.c	/^int get_client_vote_locked(struct votable *votable, const char *client_str)$/;"	f
+get_effective_client	notifier/voter.c	/^const char *get_effective_client(struct votable *votable)$/;"	f
+get_effective_client_locked	notifier/voter.c	/^const char *get_effective_client_locked(struct votable *votable)$/;"	f
+get_effective_result	notifier/voter.c	/^EXPORT_SYMBOL(get_effective_result);$/;"	v
+get_effective_result	notifier/voter.c	/^int get_effective_result(struct votable *votable)$/;"	f
+get_effective_result_locked	notifier/voter.c	/^int get_effective_result_locked(struct votable *votable)$/;"	f
+i2c_error_count	power/bq28z610.h	/^	int i2c_error_count;$/;"	m	struct:bq_fg_chip
+i2c_error_count_get	power/bq28z610.c	/^static int i2c_error_count_get(struct bq_fg_chip *gm,$/;"	f	file:
+i2c_error_count_set	power/bq28z610.c	/^static int i2c_error_count_set(struct bq_fg_chip *gm,$/;"	f	file:
+i2c_rw_lock	power/bq28z610.h	/^	struct mutex i2c_rw_lock;$/;"	m	struct:bq_fg_chip	typeref:struct:bq_fg_chip::mutex
+ibat	power/bq28z610.h	/^	int ibat;$/;"	m	struct:bq_fg_chip
+info	datastruct/datastructure.c	/^struct power_supply_battery_info *info = devm_kzalloc(&psy->dev, sizeof(*info), GFP_KERNEL);$/;"	v	typeref:struct:power_supply_battery_info
+is_client_vote_enabled	notifier/voter.c	/^bool is_client_vote_enabled(struct votable *votable, const char *client_str)$/;"	f
+is_client_vote_enabled_locked	notifier/voter.c	/^bool is_client_vote_enabled_locked(struct votable *votable,$/;"	f
+is_override_vote_enabled	notifier/voter.c	/^bool is_override_vote_enabled(struct votable *votable)$/;"	f
+is_override_vote_enabled_locked	notifier/voter.c	/^bool is_override_vote_enabled_locked(struct votable *votable)$/;"	f
+isc_alert_level_get	power/bq28z610.c	/^int isc_alert_level_get(struct bq_fg_chip *gm,$/;"	f
+last_soc	power/bq28z610.h	/^	int last_soc;$/;"	m	struct:bq_fg_chip
+list	notifier/voter.c	/^	struct list_head	list;$/;"	m	struct:votable	typeref:struct:votable::list_head	file:
+lock_votable	notifier/voter.c	/^void lock_votable(struct votable *votable)$/;"	f
+log_level	power/bq28z610.c	/^static int log_level = 1;$/;"	v	file:
+log_tag	power/bq28z610.h	/^	char log_tag[I2C_NAME_SIZE];$/;"	m	struct:bq_fg_chip
+max_chg_power_120w	power/bq28z610.h	/^	int	max_chg_power_120w;$/;"	m	struct:bq_fg_chip
+model_name	power/bq28z610.h	/^	char model_name[I2C_NAME_SIZE];$/;"	m	struct:bq_fg_chip
+monitor_delay	power/bq28z610.h	/^	int monitor_delay;$/;"	m	struct:bq_fg_chip
+monitor_delay_get	power/bq28z610.c	/^static int monitor_delay_get(struct bq_fg_chip *gm,$/;"	f	file:
+monitor_delay_set	power/bq28z610.c	/^static int monitor_delay_set(struct bq_fg_chip *gm,$/;"	f	file:
+monitor_work	power/bq28z610.h	/^	struct	delayed_work monitor_work;$/;"	m	struct:bq_fg_chip	typeref:struct:bq_fg_chip::delayed_work
+mtk_bms_supplied_to	power/bq28z610.c	/^static char *mtk_bms_supplied_to[] = {$/;"	v	file:
+mtk_bms_sysfs_field_info	power/bq28z610.h	/^struct mtk_bms_sysfs_field_info {$/;"	s
+name	notifier/voter.c	/^	const char		*name;$/;"	m	struct:votable	file:
+normal_shutdown_vbat	power/bq28z610.h	/^	int	normal_shutdown_vbat;$/;"	m	struct:bq_fg_chip
+num_clients	notifier/voter.c	/^	int			num_clients;$/;"	m	struct:votable	file:
+optimiz_soc	power/bq28z610.h	/^	int	optimiz_soc;$/;"	m	struct:bq_fg_chip
+override_client	notifier/voter.c	/^	const char		*override_client;$/;"	m	struct:votable	file:
+override_result	notifier/voter.c	/^	int			override_result;$/;"	m	struct:votable	file:
+prop	power/bq28z610.h	/^	enum bms_property prop;$/;"	m	struct:mtk_bms_sysfs_field_info	typeref:enum:mtk_bms_sysfs_field_info::bms_property
+qmax	power/bq28z610.h	/^	u16 qmax[2];$/;"	m	struct:bq_fg_chip
+raw_soc	power/bq28z610.h	/^	int raw_soc;$/;"	m	struct:bq_fg_chip
+regs	power/bq28z610.h	/^	u8 regs[NUM_REGS];$/;"	m	struct:bq_fg_chip
+report_full_rsoc	power/bq28z610.h	/^	int	report_full_rsoc;$/;"	m	struct:bq_fg_chip
+rerun_election	notifier/voter.c	/^int rerun_election(struct votable *votable)$/;"	f
+resistance_get	power/bq28z610.c	/^static int resistance_get(struct bq_fg_chip *gm,$/;"	f	file:
+resistance_id_get	power/bq28z610.c	/^static int resistance_id_get(struct bq_fg_chip *gm,$/;"	f	file:
+rm	power/bq28z610.h	/^	int rm;$/;"	m	struct:bq_fg_chip
+rm_get	power/bq28z610.c	/^static int rm_get(struct bq_fg_chip *gm,$/;"	f	file:
+root	notifier/voter.c	/^	struct dentry		*root;$/;"	m	struct:votable	typeref:struct:votable::dentry	file:
+rsoc	power/bq28z610.h	/^	int rsoc;$/;"	m	struct:bq_fg_chip
+rsoc_get	power/bq28z610.c	/^static int rsoc_get(struct bq_fg_chip *gm,$/;"	f	file:
+set	power/bq28z610.h	/^	int (*set)(struct bq_fg_chip *gm,$/;"	m	struct:mtk_bms_sysfs_field_info
+show_effective_client	notifier/voter.c	/^static int show_effective_client(struct seq_file *m, void *data)$/;"	f	file:
+show_votable_clients	notifier/voter.c	/^static int show_votable_clients(struct seq_file *m, void *data)$/;"	f	file:
+shutdown_delay	power/bq28z610.h	/^	bool	shutdown_delay;$/;"	m	struct:bq_fg_chip
+shutdown_delay_get	power/bq28z610.c	/^static int shutdown_delay_get(struct bq_fg_chip *gm,$/;"	f	file:
+shutdown_delay_set	power/bq28z610.c	/^static int shutdown_delay_set(struct bq_fg_chip *gm,$/;"	f	file:
+shutdown_flag	power/bq28z610.h	/^	bool	shutdown_flag;$/;"	m	struct:bq_fg_chip
+shutdown_mode	power/bq28z610.h	/^	bool	shutdown_mode;$/;"	m	struct:bq_fg_chip
+shutdown_mode_get	power/bq28z610.c	/^static int shutdown_mode_get(struct bq_fg_chip *gm,$/;"	f	file:
+shutdown_mode_set	power/bq28z610.c	/^static int shutdown_mode_set(struct bq_fg_chip *gm,$/;"	f	file:
+soa_alert_level_get	power/bq28z610.c	/^int soa_alert_level_get(struct bq_fg_chip *gm,$/;"	f
+soc_decimal_get	power/bq28z610.c	/^static int soc_decimal_get(struct bq_fg_chip *gm,$/;"	f	file:
+soc_decimal_rate_get	power/bq28z610.c	/^static int soc_decimal_rate_get(struct bq_fg_chip *gm,$/;"	f	file:
+soc_gap	power/bq28z610.h	/^	int	soc_gap;$/;"	m	struct:bq_fg_chip
+soh	power/bq28z610.h	/^	int soh;$/;"	m	struct:bq_fg_chip
+soh_get	power/bq28z610.c	/^static int soh_get(struct bq_fg_chip *gm,$/;"	f	file:
+str	datastruct/datastructure.c	/^char *str = kasprintf(GFP_KERNEL, "ocv-capacity-table-%d", index);$/;"	v
+str	datastruct/datastructure.c	/^kfree(str);$/;"	v
+str_array	datastruct/datastructure.c	/^static const char * const str_array[] = {$/;"	v	file:
+sys_work	notifier/main.c	/^	struct work_struct sys_work;$/;"	m	struct:demo_chip	typeref:struct:demo_chip::work_struct	file:
+tbat	power/bq28z610.h	/^	int tbat;$/;"	m	struct:bq_fg_chip
+temp_max_get	power/bq28z610.c	/^static int temp_max_get(struct bq_fg_chip *gm,$/;"	f	file:
+this_chip	notifier/main.c	/^static struct demo_chip *this_chip;$/;"	v	typeref:struct:demo_chip	file:
+time	power/bq28z610.c	/^	int time;$/;"	m	struct:ffc_smooth	file:
+time_ot_get	power/bq28z610.c	/^static int time_ot_get(struct bq_fg_chip *gm,$/;"	f	file:
+type	notifier/voter.c	/^	int			type;$/;"	m	struct:votable	file:
+ui_soc	power/bq28z610.h	/^	int ui_soc;$/;"	m	struct:bq_fg_chip
+unlock_votable	notifier/voter.c	/^void unlock_votable(struct votable *votable)$/;"	f
+update_now	power/bq28z610.h	/^	bool	update_now;$/;"	m	struct:bq_fg_chip
+value	notifier/voter.c	/^	int	value;$/;"	m	struct:client_vote	file:
+vbat	power/bq28z610.h	/^	int vbat;$/;"	m	struct:bq_fg_chip
+votable	notifier/voter.c	/^struct votable {$/;"	s	file:
+votable_any	notifier/main.c	/^	struct votable *votable_any;$/;"	m	struct:demo_chip	typeref:struct:demo_chip::votable	file:
+votable_max	notifier/main.c	/^	struct votable *votable_max;$/;"	m	struct:demo_chip	typeref:struct:demo_chip::votable	file:
+votable_min	notifier/main.c	/^	struct votable *votable_min;$/;"	m	struct:demo_chip	typeref:struct:demo_chip::votable	file:
+votable_status_open	notifier/voter.c	/^static int votable_status_open(struct inode *inode, struct file *file)$/;"	f	file:
+votable_status_ops	notifier/voter.c	/^static const struct file_operations votable_status_ops = {$/;"	v	typeref:struct:file_operations	file:
+votable_type	notifier/voter.h	/^enum votable_type {$/;"	g
+vote	notifier/voter.c	/^EXPORT_SYMBOL_GPL(vote);$/;"	v
+vote	notifier/voter.c	/^int vote(struct votable *votable, const char *client_str, bool enabled, int val)$/;"	f
+vote_lock	notifier/voter.c	/^	struct mutex		vote_lock;$/;"	m	struct:votable	typeref:struct:votable::mutex	file:
+vote_max	notifier/voter.c	/^static void vote_max(struct votable *votable, int client_id,$/;"	f	file:
+vote_min	notifier/voter.c	/^static void vote_min(struct votable *votable, int client_id,$/;"	f	file:
+vote_override	notifier/voter.c	/^int vote_override(struct votable *votable, const char *override_client,$/;"	f
+vote_set_any	notifier/voter.c	/^static void vote_set_any(struct votable *votable, int client_id,$/;"	f	file:
+voted_on	notifier/voter.c	/^	bool			voted_on;$/;"	m	struct:votable	file:
+votes	notifier/voter.c	/^	struct client_vote	votes[NUM_MAX_CLIENTS];$/;"	m	struct:votable	typeref:struct:votable::client_vote	file:

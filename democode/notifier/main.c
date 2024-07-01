@@ -14,20 +14,30 @@
 #include <linux/jiffies.h>
 #include "voter.h"
 
-#define LOG(fmt, ...) printk(KERN_ERR "%s[%d]: " fmt, __func__, __LINE__, ##__VA_ARGS__)
+static int log_level = 1;
+
+#define LOG_ERR(fmt, ...)					\
+do {								\
+	if (log_level >= 0)					\
+			printk(KERN_ERR "[ERR] ""%s[%d]: " fmt, __func__, __LINE__, ##__VA_ARGS__);	\
+} while (0)
+
+#define LOG_INFO(fmt, ...)					\
+do {								\
+	if (log_level >= 1)					\
+			printk(KERN_ERR "[INFO] ""%s[%d]: " fmt, __func__, __LINE__, ##__VA_ARGS__);	\
+} while (0)
+
+#define LOG_DBG(fmt, ...)					\
+do {								\
+	if (log_level >= 2)					\
+			printk(KERN_ERR "[DBG] ""%s[%d]: " fmt, __func__, __LINE__, ##__VA_ARGS__);	\
+} while (0)
+
 #define MIN_VOTER1 "MIN_VOTER1"
 #define MIN_VOTER2 "MIN_VOTER2"
 #define ANY_VOTER1 "ANY_VOTER1"
 #define ANY_VOTER2 "ANY_VOTER2"
-
-/*
-#define LOG(fmt, ...) \
-	do { \
-		struct timeval tv; \
-		do_gettimeofday(&tv); \
-		printk(KERN_ERR "[%ld.%06ld] %s[%d]: " fmt, tv.tv_sec, tv.tv_usec, __func__, __LINE__, ##__VA_ARGS__); \
-	} while (0)
-*/
 
 static BLOCKING_NOTIFIER_HEAD(demo_notifier);
 static struct platform_device g_pdev;
@@ -54,7 +64,7 @@ static int demo_notifier_cb(struct notifier_block *nb,
 	struct demo_chip *chip = container_of(nb, struct demo_chip, demo_nb);
 	int *data = ptr;
 
-	LOG("ev:%d data:%d debug_level:%d\n", event, *data, chip->debug_level);
+	LOG_INFO("ev:%d data:%d debug_level:%d\n", event, *data, chip->debug_level);
 	return NOTIFY_OK;
 }
 
@@ -78,7 +88,7 @@ static void demo_work(struct work_struct *work)
 {
 	struct demo_chip *chip = container_of(work, struct demo_chip, sys_work);
 
-	LOG("demo work execed! log level:%d\n", chip->debug_level);
+	LOG_INFO("demo work execed! log level:%d\n", chip->debug_level);
 }
 
 static void demo_delayed_work(struct work_struct *work)
@@ -86,7 +96,7 @@ static void demo_delayed_work(struct work_struct *work)
 	struct demo_chip *chip = container_of(work, struct demo_chip,
 			dwork.work);
 
-	LOG("demo work execed! log level:%d\n", chip->debug_level);
+	LOG_INFO("demo work execed! log level:%d\n", chip->debug_level);
 	schedule_delayed_work(&this_chip->dwork, msecs_to_jiffies(1000));
 }
 
@@ -95,7 +105,7 @@ static void demo_event_work(struct work_struct *work)
 	struct demo_chip *chip = container_of(work, struct demo_chip,
 			event_work.work);
 
-	LOG("demo work execed! log level:%d\n", chip->debug_level);
+	LOG_INFO("demo work execed! log level:%d\n", chip->debug_level);
 }
 
 static int demo_votable_min(struct votable *votable, void *data, int value, const char *client)
@@ -103,7 +113,7 @@ static int demo_votable_min(struct votable *votable, void *data, int value, cons
 	struct demo_chip *chip = data;
 	int ret = 0;
 
-	LOG("demo votable, debug_level:%d client %s vote %d\n", chip->debug_level, client, value);
+	LOG_INFO("demo votable, debug_level:%d client %s vote %d\n", chip->debug_level, client, value);
 	return ret;
 }
 
@@ -112,7 +122,7 @@ static int demo_votable_max(struct votable *votable, void *data, int value, cons
 	struct demo_chip *chip = data;
 	int ret = 0;
 
-	LOG("demo votable, debug_level:%d client %s vote %d\n", chip->debug_level, client, value);
+	LOG_INFO("demo votable, debug_level:%d client %s vote %d\n", chip->debug_level, client, value);
 	return ret;
 }
 
@@ -121,7 +131,7 @@ static int demo_votable_any(struct votable *votable, void *data, int value, cons
 	struct demo_chip *chip = data;
 	int ret = 0;
 
-	LOG("demo votable, debug_level:%d client %s vote %d\n", chip->debug_level, client, value);
+	LOG_INFO("demo votable, debug_level:%d client %s vote %d\n", chip->debug_level, client, value);
 	return ret;
 }
 /*************************************************************************************/
@@ -133,7 +143,7 @@ static int __init demo_init(void) {
 	this_chip = kmalloc(sizeof(*this_chip), GFP_KERNEL);
 
 	if (IS_ERR_OR_NULL(this_chip)) {
-		LOG("alloc mem failed!!!!\n");
+		LOG_INFO("alloc mem failed!!!!\n");
 		return -ENOMEM;
 	}
 
@@ -152,7 +162,7 @@ static int __init demo_init(void) {
 			|| IS_ERR_OR_NULL(chip->votable_max) 
 			|| IS_ERR_OR_NULL(chip->votable_any)) {
 
-		LOG("failed to create votable:%d %d %d\n", 
+		LOG_INFO("failed to create votable:%d %d %d\n", 
 				IS_ERR_OR_NULL(chip->votable_min),
 				IS_ERR_OR_NULL(chip->votable_max),
 				IS_ERR_OR_NULL(chip->votable_any));
@@ -203,7 +213,7 @@ CREATE_VOTABLE_ERR:
 static void __exit demo_exit(void) {
 	struct demo_chip *chip = this_chip;
 
-	LOG("\n");
+	LOG_INFO("\n");
 	cancel_delayed_work_sync(&chip->dwork);
 	flush_work(&chip->sys_work);
 	//cancel_delayed_work_sync(&chip->event_work);
