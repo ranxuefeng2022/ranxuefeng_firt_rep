@@ -1,6 +1,7 @@
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'Yggdroot/LeaderF'
+
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tomasr/molokai'
@@ -17,17 +18,18 @@ Plug 'voldikss/vim-floaterm'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'maralla/completor.vim'
-"Plug 'wfxr/minimap.vim'
-"Plug 'unblevable/quick-scope'
+Plug 'matze/vim-move'
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 filetype indent off
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:move_key_modifier_visualmode = 'S'
 let loaded_matchparen=1
 set t_Co=256
 syntax on
 syntax enable
 colorscheme molokai
-set mousetime=100000
+set mousetime=1000
 set mouse=a
 set hlsearch
 set background=dark
@@ -77,15 +79,24 @@ set wildignore+=.*
 set foldenable
 set foldmethod=manual
 set sessionoptions-=options
-set ttymouse=xterm2
+set completeopt=longest,menu    "让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
+set list
+set listchars=tab:~\ ,space:.
+set dictionary+=~/.vim/words
+set fileencodings=utf-8,gbk,gb18030,gb2312,ucs-bom,cp936,latin1
+
+autocmd BufWritePost * GitGutter
+autocmd InsertLeave * silent! write
+autocmd FocusGained,BufEnter * silent! checktime
 autocmd BufRead,BufNewFile * source ~/.vim/plugged/c.vim/ftplugin/c.vim
 autocmd BufRead,BufNewFile * source ~/.vim/plugged/c.vim/ftplugin/make.vim
 autocmd BufRead,BufNewFile *  hi Visual ctermfg=white ctermbg=darkblue
 autocmd BufRead,BufNewFile *  hi Search ctermfg=white ctermbg=darkblue
-autocmd InsertLeave * silent! write
-au FocusGained,BufEnter * silent! checktime
-" Return to last edit position when opening files (You want this!)
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+autocmd BufRead * if filereadable("cscope.out") | execute "cs add cscope.out" | endif
+autocmd BufRead * if filereadable("tags") | execute "set tags=tags" | endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif "离开插入模式后自动关闭预览窗口
+autocmd VimEnter * if !exists('g:vim_first_open_dir') | let g:vim_first_open_dir = expand('%:p:h') | execute 'cd' g:vim_first_open_dir | endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Visual mode pressing * or # searches for the current selection
 function! VisualSelection(direction, extra_filter) range
@@ -108,39 +119,42 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = " "
 let g:Lf_FollowLinks = 1
-vnoremap <silent> <leader>d :s/\s\+$//<CR>
-"nnoremap <leader>l :LeaderfFunction<CR>
 nnoremap <leader>l :BTags<CR>
 nnoremap <leader>f :Files<CR>
-"nnoremap <leader>f :FZF<CR>
-nnoremap <silent> <Leader>b :Buffers<CR>
-
-"nnoremap <leader>b :LeaderfBuffer<CR>
+nnoremap <silent> <Leader>r :Buffers<CR>
 nnoremap <leader>a :LeaderfFile<CR>
-nnoremap <leader>r :LeaderfMru<CR>
-nnoremap <leader>c :tabdo:source ~/.vim/plugged/c.vim/ftplugin/c.vim<CR>
+
+"nnoremap <leader>l :LeaderfFunction<CR>
+"nnoremap <leader>f :FZF<CR>
+"nnoremap <leader>b :LeaderfBuffer<CR>
+"nnoremap <leader>r :LeaderfMru<CR>
+nnoremap <leader>c :source ~/.vim/plugged/c.vim/ftplugin/c.vim<CR>
+
 nnoremap <C-h> :tabprevious<CR>
 nnoremap <C-l> :tabnext<CR>
+vnoremap <C-h> :tabprevious<CR>
+vnoremap <C-l> :tabnext<CR>
+
 nnoremap <C-w> <C-w>w
 nnoremap <C-@> :
-"vnoremap <S-Tab> <gv
-"vnoremap <Tab> >gv
+nnoremap u :u<cr>:w<cr>
 vnoremap < <gv
 vnoremap > >gv
 
 vnoremap y "ay
 nnoremap p "ap
 nnoremap P "aP
+vnoremap p "ap
+vnoremap P "aP
 
 nnoremap <S-s> :w<CR>
-nnoremap a :vsp<CR>
 nnoremap <S-Left> :vertical resize -3<CR>
 nnoremap <S-Right> :vertical resize +3<CR>
 nnoremap <S-Up> :resize -3<CR>
 nnoremap <S-Down> :resize +3<CR>
 
 inoremap jj <Esc>
-inoremap > ->
+inoremap <C-Right> ->
 
 vnoremap <Up> <Nop>
 vnoremap <Down> <Nop>
@@ -171,20 +185,24 @@ map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark
 map <leader>nf :NERDTreeFind<cr>
 map <leader>nm :NERDTreeMirror<cr>
-let g:is_fullscreen = 0
-function! ToggleVerticalSize()
-  execute g:is_fullscreen ? "vertical resize 110" : "vertical resize 999"
-  let g:is_fullscreen = !g:is_fullscreen
+
+
+let g:param1= 0
+function! Togglefunc1()
+  execute g:param1 ? "set nu relativenumber list" : "set nonu norelativenumber nolist"
+  let g:param1 = !g:param1
 endfunction
-nnoremap <silent> <leader>z :call ToggleVerticalSize()<CR>
+nnoremap <silent> <leader>no :call Togglefunc1()<CR>
+
+let g:param2= 0
+function! Togglefunc2()
+	execute g:param2 ? "vertical resize 110" : "vertical resize 999"
+	let g:param2 = !g:param2
+endfunction
+nnoremap <silent> <leader>z :call Togglefunc2()<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd VimEnter * if !exists('g:vim_first_open_dir') | let g:vim_first_open_dir = expand('%:p:h') | execute 'cd' g:vim_first_open_dir | endif
 nnoremap <F2> :cs find s <C-R>=expand("<cword>")<CR><CR>
-autocmd BufRead * if filereadable("cscope.out") | execute "cs add cscope.out" | endif
-autocmd BufRead * if filereadable("tags") | execute "set tags=tags" | endif
 " 自动补全配置
-set completeopt=longest,menu    "让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif "离开插入模式后自动关闭预览窗口
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#tabline#enabled = 1
@@ -212,8 +230,6 @@ let g:fzf_follow_links = 1
 let g:fzf_vim_dir = expand('%:p:h')
 let $FZF_DEFAULT_OPTS='--height 100% --layout=reverse'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set fileencodings=utf-8,gbk,gb18030,gb2312,ucs-bom,cp936,latin1
-set dictionary+=~/.vim/words
 vnoremap<C-c> :w! ~/.vim/cvbuf.c<CR>
 nnoremap<C-v> :r ~/.vim/cvbuf.c<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -270,11 +286,8 @@ function! HighlightSelectedText()
 endfunction
 vnoremap 1 :call HighlightSelectedText() <CR> 
 
-set list
-set listchars=tab:~\ ,space:.
-
-
-
-
-
-
+function! GitStatus()
+let [a,m,r] = GitGutterGetHunkSummary()
+return printf('+%d ~%d -%d', a, m, r)
+endfunction
+set statusline+=%{GitStatus()}
