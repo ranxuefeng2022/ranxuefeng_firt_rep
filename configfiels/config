@@ -6,6 +6,7 @@ vmware安装事项：
 6：apt install tilix
 7：apt install ranger
 8：apt install fzf
+9：ssh-keygen
 
 tmux设置：
 set-option -g mouse on
@@ -13,13 +14,7 @@ set-option -g status on
 set-option -g history-limit 10000
 bind-key -n C-x resize-pane -Z
 bind-key -n M-a select-pane -t :.+
-bind-key -n M-z run-shell "tmux select-pane -t :.+ && tmux resize-pane -Z"
 bind-key -n M-w select-window -t :-
-bind-key -n M-f select-layout even-horizontal
-bind -n M-h select-pane -L
-bind -n M-j select-pane -D
-bind -n M-k select-pane -U
-bind -n M-l select-pane -R
 
 neovim
 pip3 install --upgrade pynvim
