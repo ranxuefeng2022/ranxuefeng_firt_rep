@@ -1,3 +1,4 @@
+if 1
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'Yggdroot/LeaderF'
@@ -177,7 +178,7 @@ inoremap <C-j> <down>
 inoremap <C-k> <up>
 inoremap <C-l> <right>
 
-nnoremap # #N
+nnoremap # #Nzz
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let NERDTreeOpenOnStartup=0
 let NERDTreeWinPos="left"
@@ -270,8 +271,8 @@ nnoremap <S-k> :m .-2<CR>==
 vnoremap <S-j> :m '>+1<CR>gv=gv
 vnoremap <S-k> :m '<-2<CR>gv=gv
 
-nnoremap f :execute "normal! \<C-o>"<CR>
-nnoremap F [[
+nnoremap f :execute "normal! \<C-o>"<CR>zz
+nnoremap F [[kwzz
 
 highlight WarningMsg ctermfg=yellow guifg=yellow
 function! HighlightSelectedText()
@@ -291,3 +292,5 @@ let [a,m,r] = GitGutterGetHunkSummary()
 return printf('+%d ~%d -%d', a, m, r)
 endfunction
 set statusline+=%{GitStatus()}
+
+endif
