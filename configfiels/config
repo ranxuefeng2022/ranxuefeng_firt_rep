@@ -1,5 +1,6 @@
 vmware安装事项：
-1：apt install open-vm-tools-desktop
+1：apt install open-vm-tools-desktop sudo mkdir -p /mnt/shared_folder sudo mount -t fuse.vmhgfs-fuse .host:/ /mnt/shared_folder
+
 2：apt install git
 3：apt install cscope
 4：apt install ctags
