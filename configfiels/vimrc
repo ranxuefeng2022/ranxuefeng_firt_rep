@@ -16,11 +16,12 @@ Plug 'haya14busa/incsearch-easymotion.vim'
 
 Plug 'vim-scripts/c.vim'
 Plug 'voldikss/vim-floaterm'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'maralla/completor.vim'
 Plug 'matze/vim-move'
 Plug 'airblade/vim-gitgutter'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'mg979/vim-visual-multi'
 call plug#end()
 filetype indent off
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -179,6 +180,14 @@ inoremap <C-k> <up>
 inoremap <C-l> <right>
 
 nnoremap # #Nzz
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap <2-LeftMouse> zz
+inoremap <2-LeftMouse> zz
+vnoremap <2-LeftMouse> zz
+nnoremap <RightMouse> <LeftMouse>zz
+inoremap <RightMouse> <LeftMouse>zz
+vnoremap <RightMouse> <LeftMouse>zz
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let NERDTreeOpenOnStartup=0
 let NERDTreeWinPos="left"
@@ -239,8 +248,8 @@ nmap s <Plug>(easymotion-overwin-f2)
 let g:EasyMotion_smartcase = 1
 let g:EasyMotion_use_smartsign_us = 1 " US layout
 " JK motions: Line motions
-map <C-j> <Plug>(easymotion-j)
-map <C-k> <Plug>(easymotion-k)
+"map <C-j> <Plug>(easymotion-j)
+"map <C-k> <Plug>(easymotion-k)
 
 map <Leader>L <Plug>(easymotion-bd-jk)
 nmap <Leader>L <Plug>(easymotion-overwin-line)
