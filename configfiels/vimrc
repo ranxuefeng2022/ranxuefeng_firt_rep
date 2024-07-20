@@ -1,27 +1,36 @@
 if 1
 call plug#begin('~/.vim/plugged')
-Plug 'tpope/vim-fugitive'
 Plug 'Yggdroot/LeaderF'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
+Plug 'vim-scripts/taglist.vim'
 Plug 'tomasr/molokai'
-Plug 'git@github.com:vim-scripts/c.vim.git'
 Plug 'preservim/nerdtree'
+
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'vim-scripts/taglist.vim'
+
 Plug 'easymotion/vim-easymotion'
 Plug 'haya14busa/incsearch-easymotion.vim'
 
+Plug 'git@github.com:vim-scripts/c.vim.git'
 Plug 'vim-scripts/c.vim'
+
 Plug 'voldikss/vim-floaterm'
 Plug 'francoiscabrol/ranger.vim'
-Plug 'maralla/completor.vim'
+
+"Plug 'maralla/completor.vim'
 Plug 'matze/vim-move'
+
+Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'junegunn/gv.vim'
+
 Plug 'terryma/vim-multiple-cursors'
 Plug 'mg979/vim-visual-multi'
+
 call plug#end()
 filetype indent off
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -182,9 +191,7 @@ inoremap <C-l> <right>
 nnoremap # #Nzz
 nnoremap n nzz
 nnoremap N Nzz
-nnoremap <2-LeftMouse> zz
-inoremap <2-LeftMouse> zz
-vnoremap <2-LeftMouse> zz
+nnoremap <C-LeftMouse> <C-LeftMouse>zz
 nnoremap <RightMouse> <LeftMouse>zz
 inoremap <RightMouse> <LeftMouse>zz
 vnoremap <RightMouse> <LeftMouse>zz
@@ -280,7 +287,9 @@ nnoremap <S-k> :m .-2<CR>==
 vnoremap <S-j> :m '>+1<CR>gv=gv
 vnoremap <S-k> :m '<-2<CR>gv=gv
 
-nnoremap f :execute "normal! \<C-o>"<CR>zz
+"nnoremap f :execute "normal! \<C-o>"<CR>zz
+nnoremap f <C-o>zz
+nnoremap c <C-]>zz
 nnoremap F [[kwzz
 
 highlight WarningMsg ctermfg=yellow guifg=yellow
@@ -303,3 +312,12 @@ endfunction
 set statusline+=%{GitStatus()}
 
 endif
+
+
+let g:Lf_GtagsAutoGenerate = 0
+let g:Lf_Gtagslabel = 'native-pygments'
+noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
+noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
+noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
+noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
+noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
