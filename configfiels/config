@@ -14,8 +14,12 @@ set-option -g mouse on
 set-option -g status on
 set-option -g history-limit 10000
 bind-key -n C-x resize-pane -Z
-bind-key -n M-a select-pane -t :.+
+bind-key -n M-a run-shell "tmux select-pane -t :.+ && tmux resize-pane -Z"
 bind-key -n M-w select-window -t :-
+unbind C-a
+set -g prefix C-a
+bind C-a send-prefix
+
 
 neovim
 pip3 install --upgrade pynvim
